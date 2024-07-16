@@ -1,0 +1,16 @@
+.swiper-button-prev,
+.swiper-button-next {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.event.swiper-button-next,
+.event.swiper-button-prev {
+  width: 24px;
+  height: 24px;
+}
