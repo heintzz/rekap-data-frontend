@@ -35,9 +35,7 @@ const HalamanTambahPemeriksaan = () => {
     },
   });
 
-  const tanggalPencatatan = formData?.tanggalPencatatan
-    ? formData.tanggalPencatatan
-    : new Date().toISOString().split('T')[0];
+  const tanggalPencatatan = formData.tanggalPencatatan;
 
   const date = new Date();
   const ageInMonths = calculateAgeByMonth(tanggalLahir, tanggalPencatatan);
@@ -83,8 +81,6 @@ const HalamanTambahPemeriksaan = () => {
     }
   };
 
-  console.log('formData', formData);
-
   return (
     <MainLayout>
       <div className="px-4 pb-10">
@@ -108,7 +104,7 @@ const HalamanTambahPemeriksaan = () => {
               type="date"
               className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
               onChange={handleValueChange}
-              defaultValue={formData.tanggalPencatatan}
+              value={tanggalPencatatan}
             ></input>
           </div>
           {!isLoading && data && (
@@ -302,7 +298,7 @@ const HalamanTambahPemeriksaan = () => {
               )}
               <Imunisasi age={ageInMonths} setData={setFormData} />
             </>
-          )} 
+          )}
           <button
             type="submit"
             className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md"

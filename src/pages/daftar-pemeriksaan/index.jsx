@@ -42,7 +42,7 @@ const HalamanDaftarPemeriksaan = () => {
                       {fullTimeToDateString(record.tanggalPencatatan)}
                     </p>
                   </div>
-                  <Link to={`/pemeriksaan/${record._id}/edit`}>
+                  <Link to={`/pemeriksaan/${record._id}`}>
                     <button className="text-gray-400 hover:text-gray-600">
                       <FiEdit size={18} />
                     </button>
@@ -93,6 +93,16 @@ const HalamanDaftarPemeriksaan = () => {
             );
           })}
       </div>
+
+      {/* <div className="fixed inset-0 -translate-y-20 flex items-end justify-center">
+        <a href={`http://localhost:8080/reports?year=${year}&month=${month}`}>
+          <button className="flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
+            <RiFileExcel2Fill className="mr-2" size={20} />
+            Download Laporan
+          </button>
+        </a>
+      </div> */}
+
       <div className="fixed bottom-20 right-6">
         <a href={`http://localhost:8080/reports?year=${year}&month=${month}`}>
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg flex items-center">

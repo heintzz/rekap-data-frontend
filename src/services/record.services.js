@@ -1,14 +1,22 @@
 import api from 'configs/api';
-import { getToken } from 'utils/auth';
 
 const recordServices = {
+  getRecord: (id) => {
+    return new Promise((resolve, reject) => {
+      api
+        .get(`/records/${id}`)
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
   getRecords: (query) => {
     return new Promise((resolve, reject) => {
       api
         .get('/records', {
-          headers: {
-            Authorization: `Bearer ${getToken()}`,
-          },
           params: query,
         })
         .then((response) => {
@@ -22,11 +30,19 @@ const recordServices = {
   createRecord: (data) => {
     return new Promise((resolve, reject) => {
       api
-        .post('/records', data, {
-          headers: {
-            Authorization: `Bearer ${getToken()}`,
-          },
+        .post('/records', data)
+        .then((response) => {
+          resolve(response.data);
         })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
+  updateRecord: (id, data) => {
+    return new Promise((resolve, reject) => {
+      api
+        .put(`/records/${id}`, data)
         .then((response) => {
           resolve(response.data);
         })
@@ -38,11 +54,7 @@ const recordServices = {
   getGroupedDates: () => {
     return new Promise((resolve, reject) => {
       api
-        .get('/records/grouped', {
-          headers: {
-            Authorization: `Bearer ${getToken()}`,
-          },
-        })
+        .get('/records/grouped')
         .then((response) => {
           resolve(response.data);
         })
