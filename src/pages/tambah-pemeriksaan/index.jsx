@@ -44,7 +44,7 @@ const HalamanTambahPemeriksaan = () => {
 
   const getVitaminA =
     ageInMonths >= 6 && ageInMonths <= 60 && month === 'Februari' && month === 'Agustus';
-  const canGetASIEksklusif = ageInMonths <= 6;
+  const canGetASI = ageInMonths <= 24;
   const canGetMPASI = ageInMonths >= 6 && ageInMonths <= 24;
 
   const createHealthRecord = async (e) => {
@@ -224,20 +224,18 @@ const HalamanTambahPemeriksaan = () => {
                   </div>
                 </div>
               )}
-              {canGetASIEksklusif && (
+              {canGetASI && (
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    ASI Eksklusif
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">ASI</label>
                   <div className="flex space-x-4">
                     <div className="flex items-center">
                       <input
                         type="radio"
                         id="MPASI_ya"
-                        name="asiEksklusif"
+                        name="asi"
                         value={1}
                         onChange={handleValueChange}
-                        checked={formData.asiEksklusif == 1}
+                        checked={formData.asi == 1}
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                       />
                       <label htmlFor="MPASI_ya" className="ml-2 text-sm text-gray-700">
@@ -248,10 +246,10 @@ const HalamanTambahPemeriksaan = () => {
                       <input
                         type="radio"
                         id="vitA_tidak"
-                        name="asiEksklusif"
+                        name="asi"
                         value={0}
                         onChange={handleValueChange}
-                        checked={formData.asiEksklusif == 0}
+                        checked={formData.asi == 0}
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                       />
                       <label htmlFor="vitA_tidak" className="ml-2 text-sm text-gray-700">
