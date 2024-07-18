@@ -7,7 +7,7 @@ export default function Header() {
       <div className="flex relative justify-between items-center w-full max-w-[425px]">
         <div className="flex">
           <Link to="/" className="flex gap-x-1 items-center">
-            <img src={SituntingIcon} alt="depublic icon" className="w-12" />
+            <img src={SituntingIcon} alt="situnting icon" className="w-12" />
             <span className="font-semibold">SiTunting</span>
           </Link>
         </div>
