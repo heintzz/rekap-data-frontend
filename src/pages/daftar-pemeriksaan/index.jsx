@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
+import KMSAnakComponent from 'components/KMSAnak';
 import MainLayout from 'components/MainLayout';
 import { fullTimeToDateString } from 'enums/date';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FiChevronDown, FiChevronUp, FiEdit } from 'react-icons/fi';
 import { RiFileExcel2Fill } from 'react-icons/ri';
 import { Link, useSearchParams } from 'react-router-dom';
 import recordServices from 'services/record.services';
-import PropTypes from 'prop-types';
-import KMSAnakComponent from 'components/KMSAnak';
 
 const AccordionComponent = ({ record, isOpen, toggleItem, isLast }) => {
   return (

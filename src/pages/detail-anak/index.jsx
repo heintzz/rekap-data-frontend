@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
+import { fullTimeToDateString } from 'enums/date';
 import moment from 'moment';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { IoArrowBack } from 'react-icons/io5';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import childServices from 'services/child.services';
-import recordServices from '../../services/record.services';
+import recordServices from 'services/record.services';
 
 const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 
@@ -191,38 +192,64 @@ const HalamanDetailAnak = () => {
             <button
               type="button"
               onClick={handleSave}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-blue-500 text-white px-4 mb-4 py-2 rounded-md hover:bg-blue-600"
             >
               Simpan
             </button>
           )}
         </form>
-        <p className="text-xl font-semibold mt-4">Riwayat Pemeriksaan</p>
+        <div className="flex items-center justify-between mt-4">
+          <p className="text-xl font-semibold">Riwayat Pemeriksaan</p>
+          {records.length != 0 && (
+            <Link to={`/data/anak/${id}/kms`}>
+              <button className="bg-gray-200 px-2 py-1 rounded-md">Lihat KMS</button>
+            </Link>
+          )}
+        </div>
         {records.length == 0 ? (
           <p>Belum ada riwayat pemeriksaan</p>
         ) : (
           <div>
             {records.map((record) => (
-              <div key={record._id} className="border-b border-gray-300 py-4">
-                <p className="text-lg font-semibold">
-                  {moment(record.tanggalPencatatan).format('DD MMMM YYYY')}
-                </p>
-                <div className="grid grid-cols-2 gap-4 mt-2">
-                  <div>
-                    <p className="text-sm text-gray-700">Usia</p>
-                    <p className="text-lg font-semibold">{record.usia} bulan</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-700">Berat Badan</p>
-                    <p className="text-lg font-semibold">{record.beratBadan} kg</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-700">Tinggi Badan</p>
-                    <p className="text-lg font-semibold">{record.tinggiBadan} cm</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-700">ASI Eksklusif</p>
-                    <p className="text-lg font-semibold">{record.asiEksklusif ? 'Ya' : 'Tidak'}</p>
+              <div className="mt-4 pb-4 border-b-2" key={record._id}>
+                <div className="mb-2">
+                  <p className="text-gray-500">Tanggal Pemeriksaan:</p>
+                  <p className="font-medium text-gray-900">
+                    {fullTimeToDateString(record.tanggalPencatatan)}
+                  </p>
+                </div>
+
+                <div className="mb-2">
+                  <p className="text-gray-500">Usia:</p>
+                  <p className="font-medium text-gray-900">{record.usia} bulan</p>
+                </div>
+
+                <div className="mb-2">
+                  <p className="text-gray-500">Pengukuran:</p>
+                  <p className="font-medium text-gray-900">
+                    BB: {record.beratBadan} kg, TB: {record.tinggiBadan} cm
+                  </p>
+                </div>
+
+                <div className="mb-2">
+                  <p className="text-sm text-gray-500">ASI Eksklusif:</p>
+                  <p className="font-medium text-gray-900">
+                    {record.asiEksklusif ? 'Ya' : 'Tidak'}
+                  </p>
+                </div>
+
+                <div className="mb-2">
+                  <p className="text-gray-500">Status gizi:</p>
+                  <div className="mt-1 flex flex-wrap gap-2 max-w-full overflow-hidden">
+                    <p className="w-fit rounded-xl bg-gray-200 text-sm py-1 px-2">
+                      BB/U {record.status['bb/u']}
+                    </p>
+                    <p className="w-fit rounded-xl bg-gray-200 text-sm py-1 px-2">
+                      TB/U {record.status['tb/u']}
+                    </p>
+                    <p className="w-fit rounded-xl bg-gray-200 text-sm py-1 px-2">
+                      BB/TB {record.status['bb/tb']}
+                    </p>
                   </div>
                 </div>
               </div>

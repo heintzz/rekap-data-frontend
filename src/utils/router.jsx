@@ -6,6 +6,7 @@ import HalamanDaftarOrangTua from 'pages/data-ortu';
 import HalamanDaftarAnakOrangTua from 'pages/data-ortu/daftar-anak';
 import HalamanDetailAnak from 'pages/detail-anak';
 import HalamanDetailPemeriksaan from 'pages/detail-pemeriksaan';
+import HalamanKMSAnak from 'pages/kms-anak';
 import HalamanTambahAnak from 'pages/tambah-anak';
 import HalamanTambahOrangTua from 'pages/tambah-ortu';
 import HalamanTambahPemeriksaan from 'pages/tambah-pemeriksaan';
@@ -20,6 +21,7 @@ export default function RouterConfig() {
       <Route path="/data/ortu/tambah" element={<HalamanTambahOrangTua />} />
       <Route path="/data/anak" element={<HalamanDaftarAnak />} />
       <Route path="/data/anak/:id" element={<HalamanDetailAnak />} />
+      <Route path="/data/anak/:id/kms" element={<HalamanKMSAnak />} />
       <Route path="/data/anak/tambah" element={<HalamanTambahAnak />} />
       <Route path="/pemeriksaan" element={<HalamanDaftarTanggalPemeriksaan />} />
       <Route path="/pemeriksaan/waktu" element={<HalamanDaftarPemeriksaan />} />
