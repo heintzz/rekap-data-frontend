@@ -5,14 +5,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IndexToMonthEnum } from 'enums/date';
 import recordServices from 'services/record.services';
 import { IoArrowBack } from 'react-icons/io5';
+import toast from 'react-hot-toast';
 
 const HalamanDaftarTanggalPemeriksaan = () => {
   const navigate = useNavigate();
   const { data, isLoading } = useQuery({
     queryKey: ['getGroupedRecordDates'],
     queryFn: async () => {
-      const response = await recordServices.getGroupedDates();
-      return response.data;
+      try {
+        const response = await recordServices.getGroupedDates();
+        return response.data;
+      } catch (error) {
+        toast.error(error.response?.data?.message || 'Kesalahan server');
+        return;
+      }
     },
   });
 
@@ -25,6 +31,10 @@ const HalamanDaftarTanggalPemeriksaan = () => {
           </button>
           <h1 className="text-xl font-semibold">Riwayat Pemeriksaan Anak</h1>
         </div>
+        {isLoading &&
+          [1, 2, 3].map((skeleton) => (
+            <div key={skeleton} className="w-full h-10 bg-gray-200 rounded-md animate-pulse"></div>
+          ))}
         {!isLoading &&
           data &&
           data.map((date, index) => {

@@ -297,11 +297,8 @@ const HalamanTambahPemeriksaan = () => {
               <Imunisasi age={ageInMonths} setData={setFormData} />
             </>
           )}
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md"
-          >
-            Submit
+          <button type="submit" className="w-fit py-2 px-4 bg-[#D1D8C5] font-semibold rounded-md">
+            Tambah
           </button>
         </form>
       </div>

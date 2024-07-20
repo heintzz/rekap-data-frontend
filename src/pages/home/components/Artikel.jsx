@@ -12,7 +12,7 @@ export default function Artikel() {
       <div id="gallery" className="grid gap-y-2 mt-2">
         {[1, 2].map((item) => (
           <div className="bg-white grid grid-cols-3 gap-x-2" key={item}>
-            <div className="col-span-1 min-h-20 bg-gray-200"></div>
+            <div className="col-span-1 min-h-20 bg-[#EEEEEE]"></div>
             <div className="col-span-2 flex flex-col justify-between">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
               <p>26 Mei 2024</p>
