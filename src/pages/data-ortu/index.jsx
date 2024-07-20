@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
-import { FaChevronRight, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { IoArrowBack } from 'react-icons/io5';
 import { LiaClipboardListSolid } from 'react-icons/lia';
 import { TbPlus, TbSearch } from 'react-icons/tb';
@@ -61,9 +61,9 @@ const HalamanDaftarOrangTua = () => {
                 <FaUser size={24} className="text-gray-600 mr-3" />
                 <h3 className="font-semibold text-gray-800">{parent.nama}</h3>
               </div>
-              <Link to={`/data/ortu/${parent._id}`} className="text-blue-600 hover:underline">
+              {/* <Link to={`/data/ortu/${parent._id}`} className="text-blue-600 hover:underline">
                 <FaChevronRight size={20} />
-              </Link>
+              </Link> */}
             </div>
           ))}
       </div>

@@ -36,8 +36,6 @@ const HalamanDetailPemeriksaan = () => {
     enabled: !!idAnak,
   });
 
-  console.log(formData);
-
   const handleValueChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -46,7 +44,8 @@ const HalamanDetailPemeriksaan = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await recordServices.updateRecord(id, formData);
       const { success } = response;
@@ -55,7 +54,6 @@ const HalamanDetailPemeriksaan = () => {
         navigate(-1);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error.response?.data?.message || 'Terjadi kesalahan pada server');
     }
   };
