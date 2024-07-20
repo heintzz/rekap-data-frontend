@@ -37,6 +37,18 @@ const childServices = {
         });
     });
   },
+  getChildrenByParentId: async (id) => {
+    return new Promise((resolve, reject) => {
+      api
+        .get(`/children/parent/${id}`)
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
   createChildRecord: async (data) => {
     return new Promise((resolve, reject) => {
       api

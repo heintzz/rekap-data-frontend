@@ -27,6 +27,18 @@ const recordServices = {
         });
     });
   },
+  getRecordsByChildId: async (id) => {
+    return new Promise((resolve, reject) => {
+      api
+        .get(`/records/child/${id}`)
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
   createRecord: (data) => {
     return new Promise((resolve, reject) => {
       api

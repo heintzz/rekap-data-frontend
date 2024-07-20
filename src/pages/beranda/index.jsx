@@ -32,24 +32,24 @@ const HalamanBeranda = () => {
         <div className="greeting font-semibold mb-2">Selamat Datang!</div>
         <Slogan />
         <div className="grid grid-cols-2 gap-x-2 mt-3">
-          <div className="flex flex-col items-start p-2 bg-[#D1D8C5] rounded-md">
+          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
             <p className="text-sm">Jumlah Anak</p>
             <p className="text-2xl font-bold">{data?.countChild || 0}</p>
             <p className="text-xs">anak</p>
           </div>
-          <div className="flex flex-col items-start p-2 bg-[#D1D8C5] rounded-md">
+          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
             <p className="text-sm">Jumlah Orang Tua</p>
             <p className="text-2xl font-bold">{data?.countParent || 0}</p>
             <p className="text-xs">orang tua</p>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-2 mt-3">
-          <div className="flex flex-col items-start p-2 bg-[#D1D8C5] rounded-md">
+          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
             <p className="text-sm">Jumlah Pemeriksaan (bulan ini)</p>
             <p className="text-2xl font-bold">{data?.countRecordThisMonth || 0}</p>
             <p className="text-xs">anak</p>
           </div>
-          <div className="flex flex-col items-start p-2 bg-[#D1D8C5] rounded-md">
+          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
             <p className="text-sm">Jumlah Anak dengan Gizi Buruk (bulan ini)</p>
             <p className="text-2xl font-bold">{data?.countMalnourishedChild || 0}</p>
             <p className="text-xs">anak</p>
@@ -58,7 +58,7 @@ const HalamanBeranda = () => {
         <div className="flex flex-col gap-4 mt-4">
           <Link
             to="/data/anak"
-            className="bg-[#D1D8C5] rounded-2xl p-4 flex items-center justify-between shadow-md"
+            className="bg-gray-200 rounded-2xl p-4 flex items-center justify-between shadow-md"
           >
             <div className="flex items-center gap-x-4">
               <FaHandsHoldingChild size={24} />
@@ -68,7 +68,7 @@ const HalamanBeranda = () => {
           </Link>
           <Link
             to="/data/ortu"
-            className="bg-[#D1D8C5] rounded-2xl p-4 flex items-center justify-between shadow-md"
+            className="bg-gray-200 rounded-2xl p-4 flex items-center justify-between shadow-md"
           >
             <div className="flex items-center gap-x-4">
               <RiParentFill size={24} />

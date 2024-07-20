@@ -6,13 +6,16 @@ import toast from 'react-hot-toast';
 import { IoArrowBack } from 'react-icons/io5';
 import { useNavigate, useParams } from 'react-router-dom';
 import childServices from 'services/child.services';
+import recordServices from '../../services/record.services';
 
 const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 
 const HalamanDetailAnak = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({});
+  const [records, setRecords] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
   useQuery({
@@ -23,6 +26,15 @@ const HalamanDetailAnak = () => {
       return response.data;
     },
     refetchOnWindowFocus: false,
+  });
+
+  useQuery({
+    queryKey: ['getRecordsByChildId', id],
+    queryFn: async () => {
+      const response = await recordServices.getRecordsByChildId(id);
+      setRecords(response.data);
+      return response.data;
+    },
   });
 
   const handleValueChange = (e) => {
@@ -90,7 +102,7 @@ const HalamanDetailAnak = () => {
           </div>
           <EditIcon />
         </div>
-        <form>
+        <form className="border-b-2">
           {renderField('Nama', 'nama', formData?.nama)}
           {renderField('NIK', 'nik', formData?.nik)}
 
@@ -185,6 +197,38 @@ const HalamanDetailAnak = () => {
             </button>
           )}
         </form>
+        <p className="text-xl font-semibold mt-4">Riwayat Pemeriksaan</p>
+        {records.length == 0 ? (
+          <p>Belum ada riwayat pemeriksaan</p>
+        ) : (
+          <div>
+            {records.map((record) => (
+              <div key={record._id} className="border-b border-gray-300 py-4">
+                <p className="text-lg font-semibold">
+                  {moment(record.tanggalPencatatan).format('DD MMMM YYYY')}
+                </p>
+                <div className="grid grid-cols-2 gap-4 mt-2">
+                  <div>
+                    <p className="text-sm text-gray-700">Usia</p>
+                    <p className="text-lg font-semibold">{record.usia} bulan</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-700">Berat Badan</p>
+                    <p className="text-lg font-semibold">{record.beratBadan} kg</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-700">Tinggi Badan</p>
+                    <p className="text-lg font-semibold">{record.tinggiBadan} cm</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-700">ASI Eksklusif</p>
+                    <p className="text-lg font-semibold">{record.asiEksklusif ? 'Ya' : 'Tidak'}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </MainLayout>
   );
