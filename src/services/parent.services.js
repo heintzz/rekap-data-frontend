@@ -58,6 +58,18 @@ const parentServices = {
         });
     });
   },
+  deleteParent: (id) => {
+    return new Promise((resolve, reject) => {
+      api
+        .delete(`/parents/${id}`)
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
 };
 
 export default parentServices;

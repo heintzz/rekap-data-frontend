@@ -2,12 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
 import SearchableSelect from 'components/SearchableSelect';
 import { IndexToMonthEnum } from 'enums/date';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { IoArrowBack } from 'react-icons/io5';
+import { IoArrowBack, IoClose } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
+import KMSAnakComponent from '../../components/KMSAnak';
 import Imunisasi from './components/Imunisasi';
 
 const calculateAgeByMonth = (date, tanggalPencatatan) => {
@@ -18,8 +20,90 @@ const calculateAgeByMonth = (date, tanggalPencatatan) => {
   return age * 12 + month;
 };
 
+const ResultModal = ({ isOpen, onClose, data }) => {
+  if (!isOpen) return null;
+  return (
+    <div
+      id="my-modal"
+      className="fixed inset-0 grid place-items-center bg-gray-600 bg-opacity-50 h-full w-full z-50"
+    >
+      <div className="relative px-5 border max-h-[500px] overflow-y-auto w-96 shadow-lg rounded-md bg-white">
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out"
+          aria-label="Close modal"
+        >
+          <IoClose className="h-6 w-6" />
+        </button>
+        <div className="mt-3">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">Hasil Pemeriksaan</h3>
+          <div className="mt-2 py-3">
+            <div className="text-sm text-gray-500">
+              <p className="mb-2">
+                <strong>Usia:</strong> {data.usia} bulan
+              </p>
+              <p className="mb-2">
+                <strong>Berat Badan:</strong> {data.beratBadan} kg
+              </p>
+              <p className="mb-2">
+                <strong>Tinggi Badan:</strong> {data.tinggiBadan} cm
+              </p>
+              <p className="mb-2">
+                <strong>Jenis Kelamin:</strong>{' '}
+                {data.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan'}
+              </p>
+              <div className="mb-2">
+                <strong>Status:</strong>
+                <div className="flex flex-wrap gap-2 mt-1">
+                  <span className="bg-gray-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                    {data.status['bb/u']}
+                  </span>
+                  <span className="bg-gray-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                    {data.status['tb/u']}
+                  </span>
+                  <span className="bg-gray-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                    {data.status['bb/tb']}
+                  </span>
+                </div>
+              </div>
+              {data.imunisasi.length > 0 && (
+                <div className="mb-2">
+                  <strong>Imunisasi:</strong>
+                  <div className="mt-1">
+                    {data.imunisasi.map((imun, index) => (
+                      <div key={index} className="flex items-center mb-1">
+                        <input
+                          type="checkbox"
+                          checked
+                          readOnly
+                          className="form-checkbox h-4 w-4 text-blue-600"
+                        />
+                        <span className="ml-2 text-sm">{imun}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <KMSAnakComponent id={data.idAnak} />
+      </div>
+    </div>
+  );
+};
+
+ResultModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  data: PropTypes.object,
+};
+
 const HalamanTambahPemeriksaan = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [result, setResult] = useState(null);
+
   const [formData, setFormData] = useState({
     pertamaKali: false,
     tanggalPencatatan: new Date().toISOString().split('T')[0],
@@ -56,10 +140,12 @@ const HalamanTambahPemeriksaan = () => {
         jenisKelamin,
         usia: ageInMonths,
       });
-      const { success } = response;
+      const { success, data } = response;
+
       if (success) {
         toast.success('Data pemeriksaan ditambahkan');
-        navigate('/pemeriksaan');
+        setResult(data);
+        setShowModal(true);
       }
     } catch (error) {
       console.error(error);
@@ -302,6 +388,14 @@ const HalamanTambahPemeriksaan = () => {
           </button>
         </form>
       </div>
+      <ResultModal
+        isOpen={showModal}
+        onClose={() => {
+          navigate('/pemeriksaan');
+          setShowModal(false);
+        }}
+        data={result}
+      />
     </MainLayout>
   );
 };

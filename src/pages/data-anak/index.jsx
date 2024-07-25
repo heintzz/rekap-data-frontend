@@ -1,14 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaTrash, FaUser } from 'react-icons/fa';
 import { IoArrowBack } from 'react-icons/io5';
 import { LiaClipboardListSolid } from 'react-icons/lia';
 import { TbPlus, TbSearch } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import childServices from 'services/child.services';
-import toast from 'react-hot-toast';
-import { useState } from 'react';
-import PropTypes from 'prop-types';
 
 const ConfirmationModal = ({ isOpen, onClose, onConfirm, message }) => {
   if (!isOpen) return null;
@@ -18,7 +18,6 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, message }) => {
       <div className=" p-5 border w-96 shadow-lg rounded-md bg-white">
         <div className="mt-3 text-center">
           <h3 className="text-lg leading-6 font-medium text-gray-900">{message}</h3>
-
           <div className="flex items-center px-4 py-3 gap-x-2 mt-4">
             <button
               onClick={onClose}
