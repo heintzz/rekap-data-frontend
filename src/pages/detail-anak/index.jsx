@@ -40,10 +40,23 @@ const HalamanDetailAnak = () => {
 
   const handleValueChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    if (name === 'rt' || name === 'rw') {
+      setFormData((prev) => {
+        return {
+          ...prev,
+          alamat: {
+            ...prev.alamat,
+            [name]: value,
+          },
+        };
+      });
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const toggleEditMode = () => {
