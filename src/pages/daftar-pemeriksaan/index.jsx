@@ -48,8 +48,8 @@ const AccordionComponent = ({ record, isOpen, toggleItem, isLast }) => {
           </div>
 
           <div className="mb-2">
-            <p className="text-sm text-gray-500">ASI Eksklusif:</p>
-            <p className="font-medium text-gray-900">{record.asiEksklusif ? 'Ya' : 'Tidak'}</p>
+            <p className="text-sm text-gray-500">ASI:</p>
+            <p className="font-medium text-gray-900">{record.asi ? 'Ya' : 'Tidak'}</p>
           </div>
 
           <div className="mb-2">
