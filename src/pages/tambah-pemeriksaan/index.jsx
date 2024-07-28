@@ -317,28 +317,28 @@ const HalamanTambahPemeriksaan = () => {
                     <div className="flex items-center">
                       <input
                         type="radio"
-                        id="MPASI_ya"
+                        id="ASI_ya"
                         name="asi"
                         value={1}
                         onChange={handleValueChange}
                         checked={formData.asi == 1}
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                       />
-                      <label htmlFor="MPASI_ya" className="ml-2 text-sm text-gray-700">
+                      <label htmlFor="ASI_ya" className="ml-2 text-sm text-gray-700">
                         Ya
                       </label>
                     </div>
                     <div className="flex items-center">
                       <input
                         type="radio"
-                        id="vitA_tidak"
+                        id="ASI_tidak"
                         name="asi"
                         value={0}
                         onChange={handleValueChange}
                         checked={formData.asi == 0}
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                       />
-                      <label htmlFor="vitA_tidak" className="ml-2 text-sm text-gray-700">
+                      <label htmlFor="ASI_tidak" className="ml-2 text-sm text-gray-700">
                         Tidak
                       </label>
                     </div>
