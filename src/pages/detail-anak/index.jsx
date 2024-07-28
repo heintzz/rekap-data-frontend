@@ -64,7 +64,7 @@ const HalamanDetailAnak = () => {
   };
 
   const EditIcon = () => (
-    <button onClick={toggleEditMode} className="text-blue-500 hover:text-blue-700">
+    <button onClick={toggleEditMode} className="text-[#D1D8C5]">
       {isEditing ? 'Batal' : 'Edit'}
     </button>
   );
@@ -200,7 +200,7 @@ const HalamanDetailAnak = () => {
             <button
               type="button"
               onClick={handleSave}
-              className="bg-blue-500 text-white px-4 mb-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-[#D1D8C5] text-white px-4 mb-4 py-2 w-fit rounded-md"
             >
               Simpan
             </button>
