@@ -25,7 +25,7 @@ const ResultModal = ({ isOpen, onClose, data }) => {
   return (
     <div
       id="my-modal"
-      className="fixed inset-0 grid place-items-center bg-gray-600 bg-opacity-50 h-full w-full z-50"
+      className="fixed inset-0 grid place-items-center bg-gray-600 bg-opacity-50 h-full w-full z-50 px-3"
     >
       <div className="relative px-5 border max-h-[500px] overflow-y-auto w-96 shadow-lg rounded-md bg-white">
         <button
