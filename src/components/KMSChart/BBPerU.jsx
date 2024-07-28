@@ -84,7 +84,7 @@ const BBPerU = ({ bbPerUmur, dataAnak }) => {
         label: 'Data Anak',
         data: bbPerUmur?.umur?.map((umur) => {
           const dataPoint = dataAnak?.find((d) => d.umur === umur);
-          return dataPoint ? dataPoint.beratBadan : null;
+          return dataPoint ? dataPoint.beratBadan : NaN;
         }),
         borderColor: 'rgba(0, 0, 0, 1)',
         backgroundColor: 'rgba(0, 0, 0, 0.6)',

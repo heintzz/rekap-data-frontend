@@ -84,7 +84,7 @@ const TBPerU = ({ tbPerUmur, dataAnak }) => {
         label: 'Data Anak',
         data: tbPerUmur?.umur?.map((umur) => {
           const dataPoint = dataAnak?.find((d) => d.umur === umur);
-          return dataPoint ? dataPoint.tinggiBadan : null;
+          return dataPoint ? dataPoint.tinggiBadan : NaN;
         }),
         borderColor: 'rgba(0, 0, 0, 1)',
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
