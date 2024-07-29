@@ -75,6 +75,14 @@ const recordServices = {
         });
     });
   },
+  deleteRecord: (id) => {
+    return new Promise((resolve, reject) => {
+      api
+        .delete(`/records/${id}`)
+        .then((response) => resolve(response.data))
+        .catch((error) => reject(error));
+    });
+  },
 };
 
 export default recordServices;

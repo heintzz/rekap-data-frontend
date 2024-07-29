@@ -44,7 +44,7 @@ const HalamanDaftarTanggalPemeriksaan = () => {
               <Link
                 key={index}
                 to={`/pemeriksaan/waktu?year=${year}&month=${month}`}
-                className={`text-sm ${
+                className={`text-sm \${
                   index === data.length - 1 ? '' : 'pb-2 border-b border-black'
                 }`}
               >

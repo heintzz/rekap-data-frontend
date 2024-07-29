@@ -4,16 +4,35 @@ import MainLayout from 'components/MainLayout';
 import { fullTimeToDateString } from 'enums/date';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { FaTrashCan } from 'react-icons/fa6';
 import { FiChevronDown, FiChevronUp, FiEdit } from 'react-icons/fi';
 import { RiFileExcel2Fill } from 'react-icons/ri';
 import { Link, useSearchParams } from 'react-router-dom';
 import recordServices from 'services/record.services';
 
-const AccordionComponent = ({ record, isOpen, toggleItem, isLast }) => {
+const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch }) => {
+  const deleteRecord = async () => {
+    try {
+      const response = await recordServices.deleteRecord(record._id);
+      const { success } = response;
+      if (success) {
+        toast.success('Data berhasil dihapus');
+        triggerRefetch();
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Terjadi kesalahan saat menghapus data');
+    }
+  };
   return (
     <div key={record._id} className={`text-sm ${isLast ? '' : 'pb-2 border-b border-black'}`}>
       <div className="flex justify-between items-center">
-        <div className="font-medium text-gray-900">{record.idAnak?.nama || 'Tidak ada nama'}</div>
+        <div className="flex items-center gap-2">
+          <button onClick={deleteRecord}>
+            <FaTrashCan size={18} color="red" />
+          </button>
+          <div className="font-medium text-gray-900">{record.idAnak?.nama || 'Tidak ada nama'}</div>
+        </div>
         <div className="flex items-center">
           <Link to={`/pemeriksaan/${record._id}`}>
             <button className="text-gray-400 hover:text-gray-600 mr-2">
@@ -79,6 +98,7 @@ AccordionComponent.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggleItem: PropTypes.func.isRequired,
   isLast: PropTypes.bool.isRequired,
+  triggerRefetch: PropTypes.func,
 };
 
 const HalamanDaftarPemeriksaan = () => {
@@ -91,7 +111,7 @@ const HalamanDaftarPemeriksaan = () => {
     setOpenItemId((prevId) => (prevId === id ? null : id));
   };
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ['getRecordList', year, month],
     queryFn: async () => {
       const response = await recordServices.getRecords({
@@ -115,6 +135,7 @@ const HalamanDaftarPemeriksaan = () => {
                 isOpen={openItemId === record._id}
                 toggleItem={() => toggleItem(record._id)}
                 isLast={index === data.length - 1}
+                triggerRefetch={refetch}
               />
             );
           })}

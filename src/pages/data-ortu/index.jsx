@@ -3,7 +3,8 @@ import MainLayout from 'components/MainLayout';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { FaTrash, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
+import { FaTrashCan } from 'react-icons/fa6';
 import { IoArrowBack } from 'react-icons/io5';
 import { LiaClipboardListSolid } from 'react-icons/lia';
 import { TbPlus, TbSearch } from 'react-icons/tb';
@@ -141,7 +142,7 @@ const HalamanDaftarOrangTua = () => {
                   onClick={(e) => openDeleteModal(e, parent._id, parent.nama)}
                   className="text-red-500 hover:text-red-600 mr-3"
                 >
-                  <FaTrash size={20} />
+                  <FaTrashCan size={20} />
                 </button>
               </div>
             </Link>
