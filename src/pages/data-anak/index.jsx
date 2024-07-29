@@ -90,13 +90,16 @@ const HalamanDaftarAnak = () => {
     <MainLayout>
       {/* Header */}
       <header className="flex justify-between items-center px-4">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center text-[#4A5568]">
           <button className="mr-2">
             <IoArrowBack size={24} />
           </button>
           <span className="text-lg font-semibold">Kembali</span>
         </Link>
-        <Link to="/data/anak/tambah" className="font-semibold flex items-center gap-x-1">
+        <Link
+          to="/data/anak/tambah"
+          className="font-semibold flex items-center gap-x-1 text-[#4A90E2]"
+        >
           <TbPlus size={24} /> Tambah Anak
         </Link>
       </header>
@@ -107,14 +110,14 @@ const HalamanDaftarAnak = () => {
           <input
             type="text"
             placeholder="Ketik untuk mencari nama anak"
-            className="w-full p-2 pl-10 bg-white rounded-md border shadow-md"
+            className="w-full p-2 pl-10 bg-white rounded-md border border-[#E5E9F0] shadow-md"
           />
-          <TbSearch size={24} className="text-gray-400 absolute left-2 top-2" />
+          <TbSearch size={24} className="text-[#4A5568] absolute left-2 top-2" />
         </div>
       </div>
 
       {/* Total Anak */}
-      <div className="mx-4 mt-4 flex gap-x-1 items-center">
+      <div className="mx-4 mt-4 flex gap-x-1 items-center text-[#4A5568]">
         <LiaClipboardListSolid size={24} />
         <span>Total anak: {data?.length || 0} anak</span>
       </div>
@@ -126,16 +129,16 @@ const HalamanDaftarAnak = () => {
             <Link
               key={anak._id}
               to={`/data/anak/${anak._id}`}
-              className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between"
+              className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0]"
             >
               <div className="flex items-center">
-                <FaUser size={24} className="text-gray-600 mr-3" />
-                <h3 className="font-semibold text-gray-800">{anak.nama}</h3>
+                <FaUser size={24} className="text-[#4A90E2] mr-3" />
+                <h3 className="font-semibold text-[#4A5568]">{anak.nama}</h3>
               </div>
               <div className="flex items-center">
                 <button
                   onClick={(e) => openDeleteModal(e, anak._id, anak.nama)}
-                  className="text-red-600 hover:text-red-800 mr-3"
+                  className="text-red-500 hover:text-red-600 mr-3"
                 >
                   <FaTrash size={20} />
                 </button>

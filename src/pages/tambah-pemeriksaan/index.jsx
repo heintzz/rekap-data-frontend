@@ -188,7 +188,7 @@ const HalamanTambahPemeriksaan = () => {
               name="tanggalPencatatan"
               id="tanggalPencatatan"
               type="date"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
               onChange={handleValueChange}
               value={tanggalPencatatan}
             ></input>
@@ -211,7 +211,7 @@ const HalamanTambahPemeriksaan = () => {
             <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">
               Tanggal Lahir
             </label>
-            <div className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none">
+            <div className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none">
               {tanggalLahir ? new Date(tanggalLahir).toLocaleDateString() : '-'}
             </div>
           </div>
@@ -223,7 +223,7 @@ const HalamanTambahPemeriksaan = () => {
               placeholder="20"
               name="beratBadan"
               id="beratBadan"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
               onChange={handleValueChange}
             ></input>
           </div>
@@ -235,7 +235,7 @@ const HalamanTambahPemeriksaan = () => {
               placeholder="80"
               name="tinggiBadan"
               id="tinggiBadan"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
               onChange={handleValueChange}
             ></input>
           </div>
@@ -253,7 +253,7 @@ const HalamanTambahPemeriksaan = () => {
                       value={true}
                       onChange={handleValueChange}
                       checked={formData.pertamaKali}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                     />
                     <label htmlFor="pertamaKali_ya" className="ml-2 text-sm text-gray-700">
                       Ya
@@ -267,7 +267,7 @@ const HalamanTambahPemeriksaan = () => {
                       value={false}
                       onChange={handleValueChange}
                       checked={!formData.pertamaKali}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                     />
                     <label htmlFor="pertamaKali_tidak" className="ml-2 text-sm text-gray-700">
                       Tidak
@@ -287,7 +287,7 @@ const HalamanTambahPemeriksaan = () => {
                         value={1}
                         onChange={handleValueChange}
                         checked={formData.vitaminA == 1}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                       />
                       <label htmlFor="vitA_ya" className="ml-2 text-sm text-gray-700">
                         Ya
@@ -301,7 +301,7 @@ const HalamanTambahPemeriksaan = () => {
                         value={0}
                         onChange={handleValueChange}
                         checked={formData.vitaminA == 0}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                       />
                       <label htmlFor="vitA_tidak" className="ml-2 text-sm text-gray-700">
                         Tidak
@@ -322,7 +322,7 @@ const HalamanTambahPemeriksaan = () => {
                         value={1}
                         onChange={handleValueChange}
                         checked={formData.asi == 1}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                       />
                       <label htmlFor="ASI_ya" className="ml-2 text-sm text-gray-700">
                         Ya
@@ -336,7 +336,7 @@ const HalamanTambahPemeriksaan = () => {
                         value={0}
                         onChange={handleValueChange}
                         checked={formData.asi == 0}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                       />
                       <label htmlFor="ASI_tidak" className="ml-2 text-sm text-gray-700">
                         Tidak
@@ -357,7 +357,7 @@ const HalamanTambahPemeriksaan = () => {
                         value={1}
                         onChange={handleValueChange}
                         checked={formData.mpasi == 1}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                       />
                       <label htmlFor="MPASI_ya" className="ml-2 text-sm text-gray-700">
                         Ya
@@ -371,7 +371,7 @@ const HalamanTambahPemeriksaan = () => {
                         value={0}
                         onChange={handleValueChange}
                         checked={formData.mpasi == 0}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                       />
                       <label htmlFor="vitA_tidak" className="ml-2 text-sm text-gray-700">
                         Tidak
@@ -383,7 +383,10 @@ const HalamanTambahPemeriksaan = () => {
               <Imunisasi age={ageInMonths} setData={setFormData} />
             </>
           )}
-          <button type="submit" className="w-fit py-2 px-4 bg-[#D1D8C5] font-semibold rounded-md">
+          <button
+            type="submit"
+            className="w-fit py-2 px-4 bg-[#4A90E2] text-white font-semibold rounded-md"
+          >
             Tambah
           </button>
         </form>

@@ -32,49 +32,49 @@ const HalamanBeranda = () => {
         <div className="greeting font-semibold mb-2">Selamat Datang!</div>
         <Slogan />
         <div className="grid grid-cols-2 gap-x-2 mt-3">
-          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
+          <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
             <p className="text-sm">Jumlah Anak</p>
-            <p className="text-2xl font-bold">{data?.countChild || 0}</p>
+            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countChild || 0}</p>
             <p className="text-xs">anak</p>
           </div>
-          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
+          <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
             <p className="text-sm">Jumlah Orang Tua</p>
-            <p className="text-2xl font-bold">{data?.countParent || 0}</p>
+            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countParent || 0}</p>
             <p className="text-xs">orang tua</p>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-2 mt-3">
-          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
+          <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
             <p className="text-sm">Jumlah Pemeriksaan (bulan ini)</p>
-            <p className="text-2xl font-bold">{data?.countRecordThisMonth || 0}</p>
+            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countRecordThisMonth || 0}</p>
             <p className="text-xs">anak</p>
           </div>
-          <div className="flex flex-col items-start p-2 bg-gray-200 rounded-md">
+          <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
             <p className="text-sm">Jumlah Anak dengan Gizi Buruk (bulan ini)</p>
-            <p className="text-2xl font-bold">{data?.countMalnourishedChild || 0}</p>
+            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countMalnourishedChild || 0}</p>
             <p className="text-xs">anak</p>
           </div>
         </div>
         <div className="flex flex-col gap-4 mt-4">
           <Link
             to="/data/anak"
-            className="bg-gray-200 rounded-2xl p-4 flex items-center justify-between shadow-md"
+            className="bg-[#EBF4FF] rounded-2xl p-4 flex items-center justify-between shadow-md"
           >
             <div className="flex items-center gap-x-4">
-              <FaHandsHoldingChild size={24} />
+              <FaHandsHoldingChild size={24} className="text-[#4A90E2]" />
               <span className="text-lg font-semibold">Data Anak</span>
             </div>
-            <TfiArrowCircleRight size={24} />
+            <TfiArrowCircleRight size={24} className="text-[#4A90E2]" />
           </Link>
           <Link
             to="/data/ortu"
-            className="bg-gray-200 rounded-2xl p-4 flex items-center justify-between shadow-md"
+            className="bg-[#EBF4FF] rounded-2xl p-4 flex items-center justify-between shadow-md"
           >
             <div className="flex items-center gap-x-4">
-              <RiParentFill size={24} />
+              <RiParentFill size={24} className="text-[#4A90E2]" />
               <span className="text-lg font-semibold">Data Orang Tua</span>
             </div>
-            <TfiArrowCircleRight size={24} />
+            <TfiArrowCircleRight size={24} className="text-[#4A90E2]" />
           </Link>
         </div>
         <div className="grid gap-y-8 mt-8">
