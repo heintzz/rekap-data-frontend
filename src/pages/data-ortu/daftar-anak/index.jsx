@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa6';
-import { IoArrowBack } from 'react-icons/io5';
+import { MdArrowBack } from 'react-icons/md';
 import { TbSearch } from 'react-icons/tb';
 import { Link, useParams } from 'react-router-dom';
 import childServices from 'services/child.services';
@@ -29,7 +29,7 @@ const HalamanDaftarAnakOrangTua = () => {
       <header className="flex justify-between items-center px-4">
         <Link to="/data/ortu" className="flex items-center">
           <button className="mr-2">
-            <IoArrowBack size={24} />
+            <MdArrowBack size={24} className="text-[#4A90E2]" />
           </button>
           <span className="text-lg font-semibold">Kembali</span>
         </Link>

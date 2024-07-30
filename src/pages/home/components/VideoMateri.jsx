@@ -14,7 +14,7 @@ export default function VideoMateri() {
       <div className="grid gap-y-2 mt-2">
         <Swiper
           modules={[Navigation]}
-          slidesPerView={1.2}
+          slidesPerView={1.35}
           spaceBetween={10}
           navigation={{
             nextEl: '.media.swiper-button-next',
@@ -26,7 +26,7 @@ export default function VideoMateri() {
           {[1, 2, 3, 4].map((item, index) => {
             return (
               <SwiperSlide key={index} className="px-1 py-2">
-                <div className="flex flex-col min-h-[150px] bg-white shadow-md rounded-lg border border-[#E5E9F0]">
+                <div className="flex flex-col min-h-[50px] bg-white shadow-md rounded-lg border border-[#E5E9F0]">
                   <iframe
                     src="https://www.youtube.com/embed/zqpinGFvivg?si=-Zqod3xGHuAhBD7x"
                     title="YouTube video player"
@@ -35,7 +35,7 @@ export default function VideoMateri() {
                     allowFullScreen
                     className="rounded-md"
                   />
-                  <p className="m-2 text-[#4A5568]">8 aksi konvergensi penurunan Stunting</p>
+                  <p className="m-2 text-[#4A5568] text-sm">8 aksi konvergensi penurunan Stunting</p>
                 </div>
               </SwiperSlide>
             );

@@ -28,56 +28,56 @@ const HalamanBeranda = () => {
 
   return (
     <MainLayout>
-      <div className="px-5">
-        <div className="greeting font-semibold mb-2">Selamat Datang!</div>
+      <div className="px-4">
+        <div className="greeting font-semibold text-lg mb-2">Selamat Datang!</div>
         <Slogan />
         <div className="grid grid-cols-2 gap-x-2 mt-3">
           <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
-            <p className="text-sm">Jumlah Anak</p>
-            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countChild || 0}</p>
-            <p className="text-xs">anak</p>
+            <p className="text-xs">Jumlah Anak</p>
+            <p className="text-xl font-bold text-[#4A90E2]">{data?.countChild || 0}</p>
+            <p className="text-[10px]">anak</p>
           </div>
           <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
-            <p className="text-sm">Jumlah Orang Tua</p>
-            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countParent || 0}</p>
-            <p className="text-xs">orang tua</p>
+            <p className="text-xs">Jumlah Orang Tua</p>
+            <p className="text-xl font-bold text-[#4A90E2]">{data?.countParent || 0}</p>
+            <p className="text-[10px]">orang tua</p>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-2 mt-3">
           <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
-            <p className="text-sm">Jumlah Pemeriksaan (bulan ini)</p>
-            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countRecordThisMonth || 0}</p>
-            <p className="text-xs">anak</p>
+            <p className="text-xs">Pemeriksaan (bulan ini)</p>
+            <p className="text-xl font-bold text-[#4A90E2]">{data?.countRecordThisMonth || 0}</p>
+            <p className="text-[10px]">anak</p>
           </div>
           <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
-            <p className="text-sm">Jumlah Anak dengan Gizi Buruk (bulan ini)</p>
-            <p className="text-2xl font-bold text-[#4A90E2]">{data?.countMalnourishedChild || 0}</p>
-            <p className="text-xs">anak</p>
+            <p className="text-xs">Gizi Buruk (bulan ini)</p>
+            <p className="text-xl font-bold text-[#4A90E2]">{data?.countMalnourishedChild || 0}</p>
+            <p className="text-[10px]">anak</p>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mt-4">
+        <div className="flex flex-col gap-3 mt-4">
           <Link
             to="/data/anak"
-            className="bg-[#EBF4FF] rounded-2xl p-4 flex items-center justify-between shadow-md"
+            className="bg-[#EBF4FF] rounded-xl p-3 flex items-center justify-between shadow-md"
           >
-            <div className="flex items-center gap-x-4">
-              <FaHandsHoldingChild size={24} className="text-[#4A90E2]" />
-              <span className="text-lg font-semibold">Data Anak</span>
+            <div className="flex items-center gap-x-3">
+              <FaHandsHoldingChild size={20} className="text-[#4A90E2]" />
+              <span className="text-base font-semibold">Data Anak</span>
             </div>
-            <TfiArrowCircleRight size={24} className="text-[#4A90E2]" />
+            <TfiArrowCircleRight size={20} className="text-[#4A90E2]" />
           </Link>
           <Link
             to="/data/ortu"
-            className="bg-[#EBF4FF] rounded-2xl p-4 flex items-center justify-between shadow-md"
+            className="bg-[#EBF4FF] rounded-xl p-3 flex items-center justify-between shadow-md"
           >
-            <div className="flex items-center gap-x-4">
-              <RiParentFill size={24} className="text-[#4A90E2]" />
-              <span className="text-lg font-semibold">Data Orang Tua</span>
+            <div className="flex items-center gap-x-3">
+              <RiParentFill size={20} className="text-[#4A90E2]" />
+              <span className="text-base font-semibold">Data Orang Tua</span>
             </div>
-            <TfiArrowCircleRight size={24} className="text-[#4A90E2]" />
+            <TfiArrowCircleRight size={20} className="text-[#4A90E2]" />
           </Link>
         </div>
-        <div className="grid gap-y-8 mt-8">
+        <div className="grid gap-y-6 mt-6">
           <Artikel />
           <PojokLiterasi />
           <VideoMateri />

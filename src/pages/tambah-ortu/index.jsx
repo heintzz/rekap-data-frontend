@@ -1,9 +1,9 @@
 import MainLayout from 'components/MainLayout';
 import { useState } from 'react';
-import { IoArrowBack } from 'react-icons/io5';
+import toast from 'react-hot-toast';
+import { MdArrowBack } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import parentServices from '../../services/parent.services';
-import toast from 'react-hot-toast';
 
 const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 
@@ -34,7 +34,7 @@ const HalamanTambahOrangTua = () => {
       <div className="px-4">
         <Link to="/data/ortu" className="flex items-center">
           <button className="mr-2">
-            <IoArrowBack size={24} />
+            <MdArrowBack size={24} className="text-[#4A90E2]" />
           </button>
           <span className="text-lg font-semibold">Tambah Orang Tua</span>
         </Link>
@@ -113,7 +113,7 @@ const HalamanTambahOrangTua = () => {
           </div>
           <button
             type="submit"
-            className="w-fit py-2 px-4 bg-[#D1D8C5] text-white font-semibold rounded-md"
+            className="w-fit py-2 px-4 bg-[#4A90E2] text-white font-semibold rounded-md"
           >
             Tambah
           </button>

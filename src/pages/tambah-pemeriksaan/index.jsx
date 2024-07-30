@@ -5,12 +5,14 @@ import { IndexToMonthEnum } from 'enums/date';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { IoArrowBack, IoClose } from 'react-icons/io5';
+import { IoClose } from 'react-icons/io5';
+import { MdArrowBack } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
 import KMSAnakComponent from '../../components/KMSAnak';
 import Imunisasi from './components/Imunisasi';
+import nutritionStatus from '../../enums/nutritionStatus';
 
 const calculateAgeByMonth = (date, tanggalPencatatan) => {
   const today = new Date(tanggalPencatatan);
@@ -54,14 +56,29 @@ const ResultModal = ({ isOpen, onClose, data }) => {
               </p>
               <div className="mb-2">
                 <strong>Status:</strong>
-                <div className="flex flex-wrap gap-2 mt-1">
-                  <span className="bg-gray-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                <div className="flex flex-wrap gap-2 mt-1 text-white">
+                  <span
+                    className="text-xs font-medium px-2.5 py-0.5 rounded"
+                    style={{
+                      backgroundColor: nutritionStatus.getColor(data.status['bb/u'], 'bb/u'),
+                    }}
+                  >
                     {data.status['bb/u']}
                   </span>
-                  <span className="bg-gray-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                  <span
+                    className="text-xs font-medium px-2.5 py-0.5 rounded"
+                    style={{
+                      backgroundColor: nutritionStatus.getColor(data.status['tb/u'], 'tb/u'),
+                    }}
+                  >
                     {data.status['tb/u']}
                   </span>
-                  <span className="bg-gray-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                  <span
+                    className="text-xs font-medium px-2.5 py-0.5 rounded"
+                    style={{
+                      backgroundColor: nutritionStatus.getColor(data.status['bb/tb'], 'bb/tb'),
+                    }}
+                  >
                     {data.status['bb/tb']}
                   </span>
                 </div>
@@ -171,8 +188,8 @@ const HalamanTambahPemeriksaan = () => {
     <MainLayout>
       <div className="px-4 pb-10">
         <div className="flex items-center mb-6">
-          <button onClick={() => navigate(-1)} className="mr-4">
-            <IoArrowBack className="w-6 h-6 text-gray-600" />
+          <button onClick={() => navigate(-1)} className="mr-2">
+            <MdArrowBack size={24} className="text-[#4A90E2]" />
           </button>
           <h1 className="text-xl font-semibold">Pemeriksaan Anak</h1>
         </div>

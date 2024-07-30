@@ -1,3 +1,4 @@
+import HalamanArtikel from 'pages/artikel';
 import HalamanBeranda from 'pages/beranda';
 import HalamanDaftarPemeriksaan from 'pages/daftar-pemeriksaan';
 import HalamanDaftarTanggalPemeriksaan from 'pages/daftar-tanggal-pemeriksaan';
@@ -16,6 +17,7 @@ export default function RouterConfig() {
   return (
     <Routes>
       <Route path="/" element={<HalamanBeranda />} />
+      <Route path="/artikel" element={<HalamanArtikel />} />
       <Route path="/data/ortu" element={<HalamanDaftarOrangTua />} />
       <Route path="/data/ortu/:id" element={<HalamanDaftarAnakOrangTua />} />
       <Route path="/data/ortu/tambah" element={<HalamanTambahOrangTua />} />
