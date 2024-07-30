@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
 import moment from 'moment';
 import { useState } from 'react';
-import { IoArrowBack } from 'react-icons/io5';
-import { useNavigate, useParams } from 'react-router-dom';
-import recordServices from 'services/record.services';
-import childServices from 'services/child.services';
 import toast from 'react-hot-toast';
+import { MdArrowBack } from 'react-icons/md';
+import { useNavigate, useParams } from 'react-router-dom';
+import childServices from 'services/child.services';
+import recordServices from 'services/record.services';
 
 const HalamanDetailPemeriksaan = () => {
   const { id } = useParams();
@@ -62,8 +62,8 @@ const HalamanDetailPemeriksaan = () => {
     <MainLayout>
       <div className="px-5 pb-10">
         <div className="flex items-center mb-6">
-          <button onClick={() => navigate(-1)} className="mr-4">
-            <IoArrowBack className="w-6 h-6 text-gray-600" />
+          <button onClick={() => navigate(-1)} className="mr-2">
+            <MdArrowBack size={24} className="text-[#4A90E2]" />
           </button>
           <h1 className="text-xl font-semibold">Pemeriksaan Anak</h1>
         </div>
@@ -115,7 +115,7 @@ const HalamanDetailPemeriksaan = () => {
               defaultValue={formData?.tinggiBadan}
             ></input>
           </div>
-          <button type="submit" className="bg-[#D1D8C5] w-fit text-white px-4 py-2 rounded-md ">
+          <button type="submit" className="bg-[#4A90E2] w-fit text-white px-4 py-2 rounded-md ">
             Simpan
           </button>
         </form>

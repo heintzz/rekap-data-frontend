@@ -5,8 +5,8 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import { FaTrashCan } from 'react-icons/fa6';
-import { IoArrowBack } from 'react-icons/io5';
 import { LiaClipboardListSolid } from 'react-icons/lia';
+import { MdArrowBack } from 'react-icons/md';
 import { TbPlus, TbSearch } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import childServices from 'services/child.services';
@@ -93,7 +93,7 @@ const HalamanDaftarAnak = () => {
       <header className="flex justify-between items-center px-4">
         <Link to="/" className="flex items-center text-[#4A5568]">
           <button className="mr-2">
-            <IoArrowBack size={24} />
+            <MdArrowBack size={24} className="text-[#4A90E2]" />
           </button>
           <span className="text-lg font-semibold">Kembali</span>
         </Link>

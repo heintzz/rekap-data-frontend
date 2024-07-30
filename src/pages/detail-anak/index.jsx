@@ -4,10 +4,11 @@ import { fullTimeToDateString } from 'enums/date';
 import moment from 'moment';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { IoArrowBack } from 'react-icons/io5';
+import { MdArrowBack } from 'react-icons/md';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
+import nutritionStatus from '../../enums/nutritionStatus';
 
 const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 
@@ -77,7 +78,7 @@ const HalamanDetailAnak = () => {
   };
 
   const EditIcon = () => (
-    <button onClick={toggleEditMode} className="text-[#D1D8C5]">
+    <button onClick={toggleEditMode} className="text-[#4A90E2]">
       {isEditing ? 'Batal' : 'Edit'}
     </button>
   );
@@ -109,8 +110,8 @@ const HalamanDetailAnak = () => {
       <div className="px-5">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center">
-            <button onClick={() => navigate(-1)} className="mr-4">
-              <IoArrowBack className="w-6 h-6 text-gray-600" />
+            <button onClick={() => navigate(-1)} className="mr-2">
+              <MdArrowBack size={24} className="text-[#4A90E2]" />
             </button>
             <h2 className="text-2xl font-bold">Detail Anak</h2>
           </div>
@@ -213,7 +214,7 @@ const HalamanDetailAnak = () => {
             <button
               type="button"
               onClick={handleSave}
-              className="bg-[#D1D8C5] text-white px-4 mb-4 py-2 w-fit rounded-md"
+              className="bg-[#4A90E2] text-white px-4 mb-4 py-2 w-fit rounded-md"
             >
               Simpan
             </button>
@@ -260,13 +261,28 @@ const HalamanDetailAnak = () => {
                 <div className="mb-2">
                   <p className="text-gray-500">Status gizi:</p>
                   <div className="mt-1 flex flex-wrap gap-2 max-w-full overflow-hidden">
-                    <p className="w-fit rounded-xl bg-gray-200 text-sm py-1 px-2">
+                    <p
+                      className="w-fit rounded-xl text-sm py-1 px-2"
+                      style={{
+                        backgroundColor: nutritionStatus.getColor(record.status['bb/u'], 'bb/u'),
+                      }}
+                    >
                       BB/U {record.status['bb/u']}
                     </p>
-                    <p className="w-fit rounded-xl bg-gray-200 text-sm py-1 px-2">
+                    <p
+                      className="w-fit rounded-xl text-sm py-1 px-2"
+                      style={{
+                        backgroundColor: nutritionStatus.getColor(record.status['tb/u'], 'tb/u'),
+                      }}
+                    >
                       TB/U {record.status['tb/u']}
                     </p>
-                    <p className="w-fit rounded-xl bg-gray-200 text-sm py-1 px-2">
+                    <p
+                      className="w-fit rounded-xl text-sm py-1 px-2"
+                      style={{
+                        backgroundColor: nutritionStatus.getColor(record.status['bb/tb'], 'bb/tb'),
+                      }}
+                    >
                       BB/TB {record.status['bb/tb']}
                     </p>
                   </div>
