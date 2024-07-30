@@ -74,7 +74,7 @@ const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch
 
           <div className="mb-2">
             <p className="text-gray-500">Status gizi:</p>
-            <div className="mt-1 flex flex-wrap gap-2 max-w-full overflow-hidden text-white">
+            <div className="mt-1 flex flex-wrap gap-2 max-w-full overflow-hidden font-semibold text-white">
               <p
                 className="w-fit rounded-xl text-sm py-1 px-2"
                 style={{ backgroundColor: nutritionStatus.getColor(record.status['bb/u'], 'bb/u') }}

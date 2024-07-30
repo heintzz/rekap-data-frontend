@@ -56,7 +56,7 @@ const ResultModal = ({ isOpen, onClose, data }) => {
               </p>
               <div className="mb-2">
                 <strong>Status:</strong>
-                <div className="flex flex-wrap gap-2 mt-1 text-white">
+                <div className="flex flex-wrap gap-2 mt-1 font-semibold text-white">
                   <span
                     className="text-xs font-medium px-2.5 py-0.5 rounded"
                     style={{
