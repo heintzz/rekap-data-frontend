@@ -45,7 +45,7 @@ export default function Artikel() {
             </div>
             <div className="col-span-2 flex flex-col justify-between">
               <p className="text-xs max-w-[180px] font-medium mb-1">{item.title}</p>
-              <p className="text-[#4A5568] text-[10px] line-clamp-2">{item.slug}</p>
+              <p className="text-[#4A5568] text-[12px] line-clamp-2">{item.slug}</p>
             </div>
           </div>
         ))}
