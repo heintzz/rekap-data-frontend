@@ -5,6 +5,34 @@ import 'swiper/css/pagination';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+const videos = [
+  {
+    id: 1,
+    title: 'Animasi 5 Gerakan Sehat',
+    link: 'https://www.youtube.com/embed/jkS6glRPD_o?si=MPbEqMSpEDT0cjsS',
+  },
+  {
+    id: 2,
+    title: 'Video Edukasi Tablet Tambah Darah',
+    link: 'https://www.youtube.com/embed/CRCJ5ibZSiw?si=cGfHg4pqsWQBOg6c',
+  },
+  {
+    id: 3,
+    title: 'Makanan Pendamping ASI',
+    link: 'https://www.youtube.com/embed/_7MHyuwxkyw?si=5oBRl460tWofslF6',
+  },
+  {
+    id: 4,
+    title: 'Edukasi Konsumsi Sayur dan Buah',
+    link: 'https://www.youtube.com/embed/SS3w5mPohcE?si=r-WsuKIRUrDmLZ5p',
+  },
+  {
+    id: 5,
+    title: 'Cegah Stunting dengan ABCDE',
+    link: 'https://www.youtube.com/embed/NU_MDQ2iNYE?si=XAQJyph9syzpy3Wf',
+  },
+];
+
 export default function VideoMateri() {
   return (
     <div id="video-materi">
@@ -23,19 +51,19 @@ export default function VideoMateri() {
           loop={true}
           className="w-full"
         >
-          {[1, 2, 3, 4].map((item, index) => {
+          {videos.map((video) => {
             return (
-              <SwiperSlide key={index} className="px-1 py-2">
+              <SwiperSlide key={video.id} className="px-1 py-2">
                 <div className="flex flex-col min-h-[50px] bg-white shadow-md rounded-lg border border-[#E5E9F0]">
                   <iframe
-                    src="https://www.youtube.com/embed/zqpinGFvivg?si=-Zqod3xGHuAhBD7x"
+                    src={video.link}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                     className="rounded-md"
                   />
-                  <p className="m-2 text-[#4A5568] text-sm">8 aksi konvergensi penurunan Stunting</p>
+                  <p className="m-2 text-[#4A5568] text-sm">{video.title}</p>
                 </div>
               </SwiperSlide>
             );
