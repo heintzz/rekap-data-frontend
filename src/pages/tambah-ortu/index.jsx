@@ -53,12 +53,12 @@ const HalamanTambahOrangTua = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="nama" className="block mb-2 text-sm font-medium text-gray-700">
-              No KK
+              NIK
             </label>
             <input
-              placeholder="No KK"
-              name="noKk"
-              id="noKk"
+              placeholder="NIK"
+              name="nik"
+              id="nik"
               className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
               onChange={handleValueChange}
             ></input>
