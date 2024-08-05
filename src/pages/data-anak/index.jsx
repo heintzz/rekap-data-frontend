@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import MainLayout from 'components/MainLayout';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import { FaTrashCan } from 'react-icons/fa6';
@@ -49,6 +49,7 @@ ConfirmationModal.propTypes = {
 const HalamanDaftarAnak = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [childToDelete, setChildToDelete] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['getDaftarAnak'],
@@ -70,6 +71,10 @@ const HalamanDaftarAnak = () => {
     setIsModalOpen(false);
     setChildToDelete(null);
   };
+
+  const filteredData = useMemo(() => {
+    return data?.filter((anak) => anak.nama.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [data, searchQuery]);
 
   const handleDelete = async () => {
     if (!childToDelete) return;
@@ -112,6 +117,8 @@ const HalamanDaftarAnak = () => {
             type="text"
             placeholder="Ketik untuk mencari nama anak"
             className="w-full p-2 pl-10 bg-white rounded-md border border-[#E5E9F0] shadow-md"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <TbSearch size={24} className="text-[#4A5568] absolute left-2 top-2" />
         </div>
@@ -125,8 +132,8 @@ const HalamanDaftarAnak = () => {
 
       <div className="mx-4 mt-4 space-y-3">
         {!isLoading &&
-          data &&
-          data.map((anak) => (
+          filteredData &&
+          filteredData.map((anak) => (
             <Link
               key={anak._id}
               to={`/data/anak/${anak._id}`}
