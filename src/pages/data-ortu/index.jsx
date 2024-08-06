@@ -52,10 +52,6 @@ const HalamanDaftarOrangTua = () => {
   const [parentToDelete, setParentToDelete] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredData = useMemo(() => {
-    return data.filter((anak) => anak.nama.toLowerCase().includes(searchQuery.toLowerCase()));
-  }, [data, searchQuery]);
-
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['getOrangTua'],
     queryFn: async () => {
@@ -64,6 +60,12 @@ const HalamanDaftarOrangTua = () => {
     },
     refetchOnWindowFocus: false,
   });
+
+  const filteredData = useMemo(() => {
+    return (
+      data?.filter((ortu) => ortu.nama.toLowerCase().includes(searchQuery.toLowerCase())) || []
+    );
+  }, [data, searchQuery]);
 
   const openDeleteModal = (e, id, nama) => {
     e.preventDefault();
