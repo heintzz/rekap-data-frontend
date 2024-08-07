@@ -41,7 +41,7 @@ export default function Artikel() {
         {articles.map((item) => (
           <Link
             key={item.id}
-            href={item.link}
+            to={item.link}
             className="bg-white grid grid-cols-3 gap-x-3 p-2 rounded-md shadow-sm border border-[#E5E9F0]"
           >
             <div className="col-span-1 min-h-20 bg-[#EBF4FF] rounded-md overflow-hidden">
