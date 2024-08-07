@@ -3,7 +3,7 @@ import MainLayout from 'components/MainLayout';
 import SearchableSelect from 'components/SearchableSelect';
 import { IndexToMonthEnum } from 'enums/date';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { IoClose } from 'react-icons/io5';
 import { MdArrowBack } from 'react-icons/md';
@@ -145,7 +145,9 @@ const HalamanTambahPemeriksaan = () => {
   const tanggalPencatatan = formData.tanggalPencatatan;
 
   const date = new Date();
-  const ageInMonths = calculateAgeByMonth(tanggalLahir, tanggalPencatatan);
+  const ageInMonths = useMemo(() => {
+    return calculateAgeByMonth(tanggalLahir, tanggalPencatatan);
+  }, [tanggalLahir, tanggalPencatatan]);
 
   const month = IndexToMonthEnum[date.getMonth()];
 
