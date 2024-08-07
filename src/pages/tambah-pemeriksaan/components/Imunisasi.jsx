@@ -5,12 +5,13 @@ const Imunisasi = ({ age, setData }) => {
   const [listImunisasi, setListImunisasi] = useState([]);
 
   const imunisasiMap = {
-    1: ['BCG', 'Polio 1'],
-    2: ['DPT', 'HB', 'Hib 1', 'Polio 2'],
-    3: ['DPT', 'HB', 'Hib 2', 'Polio 3'],
-    4: ['DPT', 'HB', 'Hib 3', 'Polio 4', 'IPV'],
+    0: ['Hepatitis B'],
+    1: ['BCG', 'OPV1'],
+    2: ['DPT-HB-Hib 1', 'OPV2'],
+    3: ['DPT-HB-Hib 2', 'OPV3'],
+    4: ['DPT-HB-Hib 3', 'OPV4'],
     9: ['Campak/MR'],
-    '18-24': ['DPT', 'HB', 'HiB', 'Campak/MR'],
+    '18-24': ['DPT-HB-HiB', 'Campak/MR'],
   };
 
   const handleChange = (e) => {
