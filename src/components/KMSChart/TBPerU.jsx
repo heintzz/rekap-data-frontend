@@ -99,19 +99,14 @@ const TBPerU = ({ tbPerUmur, dataAnak }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'bottom',
-        labels: {
-          font: {
-            family: "'Plus Jakarta Sans', sans-serif",
-          },
-        },
+        display: false,
       },
       title: {
         display: true,
         text: 'Grafik KMS - TB/U',
         font: {
           family: "'Plus Jakarta Sans', sans-serif",
-          size: 16,
+          size: 12,
           weight: 'bold',
         },
       },

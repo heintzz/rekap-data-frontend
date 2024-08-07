@@ -260,9 +260,9 @@ const HalamanDetailAnak = () => {
 
                 <div className="mb-2">
                   <p className="text-gray-500">Status gizi:</p>
-                  <div className="mt-1 flex flex-wrap gap-2 max-w-full overflow-hidden font-semibold text-white">
+                  <div className="mt-1 text-xs flex flex-wrap gap-2 max-w-full overflow-hidden font-semibold text-white">
                     <p
-                      className="w-fit rounded-xl text-sm py-1 px-2"
+                      className="w-fit rounded-xl py-1 px-2"
                       style={{
                         backgroundColor: nutritionStatus.getColor(record.status['bb/u'], 'bb/u'),
                       }}
@@ -270,7 +270,7 @@ const HalamanDetailAnak = () => {
                       BB/U {record.status['bb/u']}
                     </p>
                     <p
-                      className="w-fit rounded-xl text-sm py-1 px-2"
+                      className="w-fit rounded-xl py-1 px-2"
                       style={{
                         backgroundColor: nutritionStatus.getColor(record.status['tb/u'], 'tb/u'),
                       }}
@@ -278,7 +278,7 @@ const HalamanDetailAnak = () => {
                       TB/U {record.status['tb/u']}
                     </p>
                     <p
-                      className="w-fit rounded-xl text-sm py-1 px-2"
+                      className="w-fit rounded-xl py-1 px-2"
                       style={{
                         backgroundColor: nutritionStatus.getColor(record.status['bb/tb'], 'bb/tb'),
                       }}

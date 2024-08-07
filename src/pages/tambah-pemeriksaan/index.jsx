@@ -62,9 +62,9 @@ const ResultModal = ({ isOpen, onClose, data }) => {
               </p>
               <div className="mb-2">
                 <strong>Status:</strong>
-                <div className="flex flex-wrap gap-2 mt-1 font-semibold text-white">
+                <div className="flex flex-wrap text-xs gap-2 mt-1 font-semibold text-white">
                   <span
-                    className="text-xs font-medium px-2.5 py-0.5 rounded"
+                    className="font-medium px-2.5 py-0.5 rounded"
                     style={{
                       backgroundColor: nutritionStatus.getColor(data.status['bb/u'], 'bb/u'),
                     }}
@@ -72,7 +72,7 @@ const ResultModal = ({ isOpen, onClose, data }) => {
                     {data.status['bb/u']}
                   </span>
                   <span
-                    className="text-xs font-medium px-2.5 py-0.5 rounded"
+                    className="font-medium px-2.5 py-0.5 rounded"
                     style={{
                       backgroundColor: nutritionStatus.getColor(data.status['tb/u'], 'tb/u'),
                     }}
@@ -80,7 +80,7 @@ const ResultModal = ({ isOpen, onClose, data }) => {
                     {data.status['tb/u']}
                   </span>
                   <span
-                    className="text-xs font-medium px-2.5 py-0.5 rounded"
+                    className="font-medium px-2.5 py-0.5 rounded"
                     style={{
                       backgroundColor: nutritionStatus.getColor(data.status['bb/tb'], 'bb/tb'),
                     }}

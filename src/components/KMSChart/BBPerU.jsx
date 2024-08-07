@@ -99,19 +99,14 @@ const BBPerU = ({ bbPerUmur, dataAnak }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'bottom',
-        labels: {
-          font: {
-            family: "'Plus Jakarta Sans', sans-serif",
-          },
-        },
+        display: false,
       },
       title: {
         display: true,
-        text: ' KMS - BB/U',
+        text: 'Grafik KMS - BB/U',
         font: {
           family: "'Plus Jakarta Sans', sans-serif",
-          size: 16,
+          size: 12,
           weight: 'bold',
         },
       },
