@@ -108,7 +108,7 @@ const TBPerU = ({ tbPerUmur, dataAnak }) => {
       },
       title: {
         display: true,
-        text: 'Grafik KMS - TB/U (Laki-laki)',
+        text: 'Grafik KMS - TB/U',
         font: {
           family: "'Plus Jakarta Sans', sans-serif",
           size: 16,

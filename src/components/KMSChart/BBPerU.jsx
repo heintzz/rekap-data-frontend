@@ -108,7 +108,7 @@ const BBPerU = ({ bbPerUmur, dataAnak }) => {
       },
       title: {
         display: true,
-        text: 'Grafik KMS - BB/U (Laki-laki)',
+        text: ' KMS - BB/U',
         font: {
           family: "'Plus Jakarta Sans', sans-serif",
           size: 16,
