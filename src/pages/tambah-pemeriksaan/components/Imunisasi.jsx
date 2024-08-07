@@ -43,7 +43,7 @@ const Imunisasi = ({ age, setData }) => {
 
   const isAvailable = useMemo(() => {
     return imunisasiCheck(age).length > 0;
-  }, []);
+  }, [age]);
 
   if (isAvailable) {
     return (
