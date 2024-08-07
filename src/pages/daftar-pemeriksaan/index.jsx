@@ -63,7 +63,8 @@ const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch
           <div className="mb-2">
             <p className="text-gray-500">Pengukuran:</p>
             <p className="font-medium text-gray-900">
-              BB: {record.beratBadan} kg, TB: {record.tinggiBadan} cm
+              BB: {record.beratBadan} kg, TB: {record.tinggiBadan} cm, LL: {record.lingkarLengan}{' '}
+              cm, LK: {record.lingkarKepala} cm
             </p>
           </div>
 
@@ -71,6 +72,18 @@ const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch
             <p className="text-sm text-gray-500">ASI:</p>
             <p className="font-medium text-gray-900">{record.asi ? 'Ya' : 'Tidak'}</p>
           </div>
+
+          {record.imunisasi && record.imunisasi.length > 0 ? (
+            <div className="mb-2">
+              <p className="text-sm text-gray-500">Imunisasi:</p>
+              <p className="font-medium text-gray-900">{record.imunisasi.join(', ')}</p>
+            </div>
+          ) : (
+            <div className="mb-2">
+              <p className="text-sm text-gray-500">Imunisasi:</p>
+              <p className="font-medium text-gray-900">Tidak mendapat imunisasi</p>
+            </div>
+          )}
 
           <div className="mb-2">
             <p className="text-gray-500">Status gizi:</p>

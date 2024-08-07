@@ -51,6 +51,12 @@ const ResultModal = ({ isOpen, onClose, data }) => {
                 <strong>Tinggi Badan:</strong> {data.tinggiBadan} cm
               </p>
               <p className="mb-2">
+                <strong>Lingkar Lengan:</strong> {data.lingkarLengan} cm
+              </p>
+              <p className="mb-2">
+                <strong>Lingkar Kepala:</strong> {data.lingkarKepala} cm
+              </p>
+              <p className="mb-2">
                 <strong>Jenis Kelamin:</strong>{' '}
                 {data.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan'}
               </p>
@@ -232,31 +238,62 @@ const HalamanTambahPemeriksaan = () => {
               {tanggalLahir ? new Date(tanggalLahir).toLocaleDateString() : '-'}
             </div>
           </div>
-          <div className="mb-4">
-            <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">
-              Berat Badan
-            </label>
-            <input
-              placeholder="20"
-              name="beratBadan"
-              id="beratBadan"
-              className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
-              onChange={handleValueChange}
-            ></input>
+          <div className="grid grid-cols-2 mb-4 gap-4">
+            <div>
+              <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">
+                Berat Badan
+              </label>
+              <input
+                placeholder="20"
+                name="beratBadan"
+                id="beratBadan"
+                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                onChange={handleValueChange}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="tinggiBadan" className="block mb-2 text-sm font-medium text-gray-700">
+                Panjang/Tinggi Badan
+              </label>
+              <input
+                placeholder="80"
+                name="tinggiBadan"
+                id="tinggiBadan"
+                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                onChange={handleValueChange}
+              ></input>
+            </div>
+            <div>
+              <label
+                htmlFor="lingkarLengan"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
+                Lingkar Lengan
+              </label>
+              <input
+                placeholder="15"
+                name="lingkarLengan"
+                id="lingkarLengan"
+                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                onChange={handleValueChange}
+              ></input>
+            </div>
+            <div>
+              <label
+                htmlFor="lingkarKepala"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
+                Lingkar Kepala
+              </label>
+              <input
+                placeholder="5"
+                name="lingkarKepala"
+                id="lingkarKepala"
+                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                onChange={handleValueChange}
+              ></input>
+            </div>
           </div>
-          <div className="mb-4">
-            <label htmlFor="tinggiBadan" className="block mb-2 text-sm font-medium text-gray-700">
-              Panjang/Tinggi Badan
-            </label>
-            <input
-              placeholder="80"
-              name="tinggiBadan"
-              id="tinggiBadan"
-              className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
-              onChange={handleValueChange}
-            ></input>
-          </div>
-
           {tanggalLahir && (
             <>
               <div className="mb-4">
