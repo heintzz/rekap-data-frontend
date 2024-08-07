@@ -50,7 +50,7 @@ const Imunisasi = ({ age, setData }) => {
       <div className="form-group my-4">
         <label htmlFor="imunisasi">Imunisasi</label>
         {imunisasiCheck(age).map((imunisasi, index) => (
-          <div key={index} className="form-check">
+          <div key={index} className="form-check flex items-center">
             <input
               type="checkbox"
               id={imunisasi}
