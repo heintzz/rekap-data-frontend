@@ -73,8 +73,8 @@ const HalamanDetailPemeriksaan = () => {
               Tanggal Pemeriksaan
             </label>
             <input
-              name="tglPencatatan"
-              id="tglPencatatan"
+              name="tanggalPencatatan"
+              id="tanggalPencatatan"
               type="date"
               className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
               onChange={handleValueChange}
@@ -82,38 +82,72 @@ const HalamanDetailPemeriksaan = () => {
             ></input>
           </div>
           <div className="mb-4">
-            <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">
+            <label htmlFor="tanggalLahir" className="block mb-2 text-sm font-medium text-gray-700">
               Tanggal Lahir
             </label>
             <div className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none">
               {moment(childData?.tanggalLahir).format('DD/MM/YYYY')}
             </div>
           </div>
-          <div className="mb-4">
-            <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">
-              Berat Badan
-            </label>
-            <input
-              placeholder="20"
-              name="beratBadan"
-              id="beratBadan"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
-              onChange={handleValueChange}
-              defaultValue={formData?.beratBadan}
-            ></input>
-          </div>
-          <div className="mb-4">
-            <label htmlFor="tinggiBadan" className="block mb-2 text-sm font-medium text-gray-700">
-              Panjang/Tinggi Badan
-            </label>
-            <input
-              placeholder="80"
-              name="tinggiBadan"
-              id="tinggiBadan"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
-              onChange={handleValueChange}
-              defaultValue={formData?.tinggiBadan}
-            ></input>
+          <div className="grid grid-cols-2 mb-4 gap-4">
+            <div>
+              <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">
+                Berat Badan
+              </label>
+              <input
+                placeholder="20"
+                name="beratBadan"
+                id="beratBadan"
+                className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                onChange={handleValueChange}
+                defaultValue={formData?.beratBadan}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="tinggiBadan" className="block mb-2 text-sm font-medium text-gray-700">
+                Panjang/Tinggi Badan
+              </label>
+              <input
+                placeholder="80"
+                name="tinggiBadan"
+                id="tinggiBadan"
+                className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                onChange={handleValueChange}
+                defaultValue={formData?.tinggiBadan}
+              ></input>
+            </div>
+            <div>
+              <label
+                htmlFor="lingkarLengan"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
+                Lingkar Lengan
+              </label>
+              <input
+                placeholder="15"
+                name="lingkarLengan"
+                id="lingkarLengan"
+                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                onChange={handleValueChange}
+                defaultValue={formData?.lingkarLengan}
+              ></input>
+            </div>
+            <div>
+              <label
+                htmlFor="lingkarKepala"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
+                Lingkar Kepala
+              </label>
+              <input
+                placeholder="5"
+                name="lingkarKepala"
+                id="lingkarKepala"
+                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                onChange={handleValueChange}
+                defaultValue={formData?.lingkarKepala}
+              ></input>
+            </div>
           </div>
           <button type="submit" className="bg-[#4A90E2] w-fit text-white px-4 py-2 rounded-md ">
             Simpan
