@@ -85,7 +85,7 @@ const HalamanDetailPemeriksaan = () => {
             <label htmlFor="tanggalLahir" className="block mb-2 text-sm font-medium text-gray-700">
               Tanggal Lahir
             </label>
-            <div className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none">
+            <div className="w-full h-10 px-3 py-2 text-[14px] border border-gray-300 rounded-md focus:outline-none">
               {moment(childData?.tanggalLahir).format('DD/MM/YYYY')}
             </div>
           </div>
@@ -98,7 +98,7 @@ const HalamanDetailPemeriksaan = () => {
                 placeholder="20"
                 name="beratBadan"
                 id="beratBadan"
-                className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                className="w-full h-10 px-3 py-2 text-[14px] border border-gray-300 rounded-md focus:outline-none"
                 onChange={handleValueChange}
                 defaultValue={formData?.beratBadan}
               ></input>
@@ -111,7 +111,7 @@ const HalamanDetailPemeriksaan = () => {
                 placeholder="80"
                 name="tinggiBadan"
                 id="tinggiBadan"
-                className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                className="w-full h-10 px-3 py-2 text-[14px] border border-gray-300 rounded-md focus:outline-none"
                 onChange={handleValueChange}
                 defaultValue={formData?.tinggiBadan}
               ></input>
@@ -127,7 +127,7 @@ const HalamanDetailPemeriksaan = () => {
                 placeholder="15"
                 name="lingkarLengan"
                 id="lingkarLengan"
-                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                className="w-full h-10 px-3 text-[14px] py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
                 onChange={handleValueChange}
                 defaultValue={formData?.lingkarLengan}
               ></input>
@@ -143,7 +143,7 @@ const HalamanDetailPemeriksaan = () => {
                 placeholder="5"
                 name="lingkarKepala"
                 id="lingkarKepala"
-                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                className="w-full h-10 px-3 py-2 text-[14px] border border-[#E5E9F0] rounded-md focus:outline-none"
                 onChange={handleValueChange}
                 defaultValue={formData?.lingkarKepala}
               ></input>
