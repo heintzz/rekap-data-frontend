@@ -248,16 +248,16 @@ const VaccinationSchedule = ({ idAnak }) => {
 
   return (
     <div className="overflow-x-auto text-sm mt-4">
-      <table className="w-full border-collapse border border-gray-200">
+      <table className="w-full border-collapse border border-black">
         <thead>
           <tr className="bg-teal-100">
-            <th className="sticky left-0 z-1 border border-gray-200 min-w-[150px] bg-teal-100">
+            <th className="sticky left-0 z-1 border border-black min-w-[150px] bg-teal-100">
               UMUR
             </th>
             {ageGroups.map((age) => (
               <th
                 key={age}
-                className="border border-gray-200 px-5 py-2 min-w-fit last:px-0 last:min-w-20"
+                className="border border-black px-5 py-2 min-w-fit last:px-0 last:min-w-20"
               >
                 {age}
               </th>
@@ -266,13 +266,10 @@ const VaccinationSchedule = ({ idAnak }) => {
         </thead>
         <tbody>
           <tr>
-            <td className="sticky left-0 z-1  bg-[#8ac7e1] text-center font-bold border border-gray-200 p-3">
+            <td className="sticky left-0 z-1  bg-[#8ac7e1] text-center font-bold border border-black p-3">
               Jenis Vaksin
             </td>
-            <td
-              colSpan={16}
-              className="bg-[#8ac7e1] text-center font-bold border border-gray-200 p-3"
-            >
+            <td colSpan={16} className="bg-[#8ac7e1] text-center font-bold border border-black p-3">
               Tanggal Pemberian dan Paraf Petugas
             </td>
           </tr>
@@ -284,7 +281,7 @@ const VaccinationSchedule = ({ idAnak }) => {
             return (
               <tr key={vaccine.name}>
                 <td
-                  className={`sticky left-0 z-1 border border-gray-200 p-3 ${
+                  className={`sticky left-0 z-1 border border-black p-3 ${
                     isRowChecked ? 'bg-green-500 text-white' : 'bg-white'
                   }`}
                 >
@@ -293,16 +290,12 @@ const VaccinationSchedule = ({ idAnak }) => {
                 {ageGroups.map((_, index) => {
                   const cellColor = getCellColor(vaccine.schedule, index);
                   const checkboxId = `${vaccine.name}_${ageGroups[index]}`;
-
                   const isThisCheckboxChecked = checkedVaccine.some(
                     (item) => item.name === checkboxId
                   );
 
                   return (
-                    <td
-                      key={index}
-                      className={`border border-gray-200 p-3 ${cellColor} text-center`}
-                    >
+                    <td key={index} className={`border border-black p-3 ${cellColor} text-center`}>
                       {cellColor !== 'bg-gray-300' && (!isRowChecked || isThisCheckboxChecked) && (
                         <input
                           type="checkbox"
