@@ -38,10 +38,18 @@ const HalamanDetailPemeriksaan = () => {
 
   const handleValueChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (['beratBadan', 'tinggiBadan', 'lingkarKepala', 'lingkarLengan'].includes(name)) {
+      const newValue = value.replace(',', '.');
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: newValue,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {

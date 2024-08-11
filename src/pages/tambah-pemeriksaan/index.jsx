@@ -179,10 +179,19 @@ const HalamanTambahPemeriksaan = () => {
 
   const handleValueChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+
+    if (['beratBadan', 'tinggiBadan', 'lingkarKepala', 'lingkarLengan'].includes(name)) {
+      const newValue = value.replace(',', '.');
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: newValue,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
 
     if (name === 'idAnak') {
       const child = data.find((child) => child._id === value);
