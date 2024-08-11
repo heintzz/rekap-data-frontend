@@ -9,6 +9,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
 import nutritionStatus from '../../enums/nutritionStatus';
+import VaccinationSchedule from '../tambah-pemeriksaan/components/Vaccination';
 
 const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 
@@ -220,6 +221,10 @@ const HalamanDetailAnak = () => {
             </button>
           )}
         </form>
+        <div className="mt-4 border-b-2 pb-6">
+          <p className="text-xl font-semibold">Imunisasi Anak</p>
+          <VaccinationSchedule idAnak={id} />
+        </div>
         <div className="flex items-center justify-between mt-4">
           <p className="text-xl font-semibold">Riwayat Pemeriksaan</p>
           {records.length != 0 && (

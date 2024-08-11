@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
 import KMSAnakComponent from '../../components/KMSAnak';
-import Imunisasi from './components/Imunisasi';
 import nutritionStatus from '../../enums/nutritionStatus';
 
 const calculateAgeByMonth = (date, tanggalPencatatan) => {
@@ -89,7 +88,7 @@ const ResultModal = ({ isOpen, onClose, data }) => {
                   </span>
                 </div>
               </div>
-              {data.imunisasi.length > 0 && (
+              {/* {data.imunisasi.length > 0 && (
                 <div className="mb-2">
                   <strong>Imunisasi:</strong>
                   <div className="mt-1">
@@ -106,7 +105,7 @@ const ResultModal = ({ isOpen, onClose, data }) => {
                     ))}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
@@ -187,8 +186,8 @@ const HalamanTambahPemeriksaan = () => {
 
     if (name === 'idAnak') {
       const child = data.find((child) => child._id === value);
-      setTanggalLahir(child.tanggalLahir);
-      setJenisKelamin(child.jenisKelamin);
+      setTanggalLahir(child?.tanggalLahir);
+      setJenisKelamin(child?.jenisKelamin);
     }
   };
 
@@ -436,7 +435,7 @@ const HalamanTambahPemeriksaan = () => {
                   </div>
                 </div>
               )}
-              <Imunisasi age={ageInMonths} setData={setFormData} />
+              {/* <Imunisasi age={ageInMonths} setData={setFormData} /> */}
             </>
           )}
           <button

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import KMSAnakComponent from 'components/KMSAnak';
 import MainLayout from 'components/MainLayout';
 import { fullTimeToDateString } from 'enums/date';
+import nutritionStatus from 'enums/nutritionStatus';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -10,7 +11,6 @@ import { FiChevronDown, FiChevronUp, FiEdit } from 'react-icons/fi';
 import { RiFileExcel2Fill } from 'react-icons/ri';
 import { Link, useSearchParams } from 'react-router-dom';
 import recordServices from 'services/record.services';
-import nutritionStatus from '../../enums/nutritionStatus';
 
 const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch }) => {
   const deleteRecord = async () => {
@@ -73,7 +73,7 @@ const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch
             <p className="font-medium text-gray-900">{record.asi ? 'Ya' : 'Tidak'}</p>
           </div>
 
-          {record.imunisasi && record.imunisasi.length > 0 ? (
+          {/* {record.imunisasi && record.imunisasi.length > 0 ? (
             <div className="mb-2">
               <p className="text-sm text-gray-500">Imunisasi:</p>
               <p className="font-medium text-gray-900">{record.imunisasi.join(', ')}</p>
@@ -83,7 +83,7 @@ const AccordionComponent = ({ record, isOpen, toggleItem, isLast, triggerRefetch
               <p className="text-sm text-gray-500">Imunisasi:</p>
               <p className="font-medium text-gray-900">Tidak mendapat imunisasi</p>
             </div>
-          )}
+          )} */}
 
           <div className="mb-2">
             <p className="text-gray-500">Status gizi:</p>

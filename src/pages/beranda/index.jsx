@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import summaryServices from 'services/summary.services';
 import Artikel from '../home/components/Artikel';
 import PojokLiterasi from '../home/components/PojokLiterasi';
-import VideoMateri from '../home/components/VideoMateri';
 import Slogan from '../home/components/Slogan';
+import VideoMateri from '../home/components/VideoMateri';
 
 const StatisticSkeleton = () => (
   <div className="animate-pulse">
@@ -82,7 +82,6 @@ const HalamanBeranda = () => {
             </div>
           </>
         )}
-
         <div className="flex flex-col gap-3 mt-4">
           <Link
             to="/data/anak"
