@@ -7,6 +7,7 @@ import HalamanDaftarOrangTua from 'pages/data-ortu';
 import HalamanDaftarAnakOrangTua from 'pages/data-ortu/daftar-anak';
 import HalamanDetailAnak from 'pages/detail-anak';
 import HalamanDetailPemeriksaan from 'pages/detail-pemeriksaan';
+import HalamanInformasiWebsite from 'pages/informasi';
 import HalamanKMSAnak from 'pages/kms-anak';
 import HalamanTambahAnak from 'pages/tambah-anak';
 import HalamanTambahOrangTua from 'pages/tambah-ortu';
@@ -29,6 +30,7 @@ export default function RouterConfig() {
       <Route path="/pemeriksaan/waktu" element={<HalamanDaftarPemeriksaan />} />
       <Route path="/pemeriksaan/tambah" element={<HalamanTambahPemeriksaan />} />
       <Route path="/pemeriksaan/:id" element={<HalamanDetailPemeriksaan />} />
+      <Route path="/info-website" element={<HalamanInformasiWebsite />} />
     </Routes>
   );
 }

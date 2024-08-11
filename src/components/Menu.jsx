@@ -1,5 +1,5 @@
 import { AiOutlineHome } from 'react-icons/ai';
-import { FiPlusCircle } from 'react-icons/fi';
+import { FiInfo, FiPlusCircle } from 'react-icons/fi';
 import { IoMdBook } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
@@ -25,6 +25,13 @@ export default function Menu() {
         >
           <IoMdBook size={24} />
           <span className="text-xs">Riwayat</span>
+        </Link>
+        <Link
+          to="/info-website"
+          className="flex flex-col items-center text-[#4A5568] hover:text-[#4A90E2]"
+        >
+          <FiInfo size={24} />
+          <span className="text-xs">Info</span>
         </Link>
       </div>
     </div>

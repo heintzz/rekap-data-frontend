@@ -170,7 +170,7 @@ const HalamanDaftarPemeriksaan = () => {
         <a href={`${import.meta.env.VITE_BASE_ENDPOINT_URL}/reports?year=${year}&month=${month}`}>
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg flex items-center">
             <RiFileExcel2Fill className="mr-2" size={20} />
-            Download Excel
+            Unduh Excel
           </button>
         </a>
       </div>
