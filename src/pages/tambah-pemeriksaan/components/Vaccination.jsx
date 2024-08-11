@@ -7,7 +7,7 @@ const ageGroups = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18, 23, '24-59'];
 
 const vaccineSchedule = [
   {
-    name: 'Hepatitis B',
+    name: 'HB0',
     schedule: [
       { start: 0, end: 0, color: 'bg-white' },
       { start: 1, end: 24, color: 'bg-gray-300' },
@@ -22,7 +22,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Polio tetes 1',
+    name: 'Polio 1',
     schedule: [
       { start: 0, end: 1, color: 'bg-white' },
       { start: 2, end: 11, color: 'bg-yellow-300' },
@@ -39,21 +39,12 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Polio Tetes 2',
+    name: 'Polio 2',
     schedule: [
       { start: 0, end: 1, color: 'bg-gray-300' },
       { start: 2, end: 2, color: 'bg-white' },
       { start: 3, end: 11, color: 'bg-yellow-300' },
       { start: 12, end: 24, color: 'bg-orange-300' },
-    ],
-  },
-  {
-    name: 'Rota Virus (RV)1*',
-    schedule: [
-      { start: 0, end: 1, color: 'bg-gray-300' },
-      { start: 2, end: 2, color: 'bg-white' },
-      { start: 3, end: 6, color: 'bg-yellow-300' },
-      { start: 6, end: 24, color: 'bg-gray-300' },
     ],
   },
   {
@@ -66,6 +57,16 @@ const vaccineSchedule = [
     ],
   },
   {
+    name: 'Rota Virus 1',
+    schedule: [
+      { start: 0, end: 1, color: 'bg-gray-300' },
+      { start: 2, end: 2, color: 'bg-white' },
+      { start: 3, end: 6, color: 'bg-yellow-300' },
+      { start: 6, end: 24, color: 'bg-gray-300' },
+    ],
+  },
+
+  {
     name: 'DPT-HB-Hib 2',
     schedule: [
       { start: 0, end: 2, color: 'bg-gray-300' },
@@ -75,21 +76,12 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Polio tetes 3',
+    name: 'Polio 3',
     schedule: [
       { start: 0, end: 2, color: 'bg-gray-300' },
       { start: 3, end: 3, color: 'bg-white' },
       { start: 3, end: 11, color: 'bg-yellow-300' },
       { start: 12, end: 24, color: 'bg-orange-300' },
-    ],
-  },
-  {
-    name: 'Rota Virus (RV)2*',
-    schedule: [
-      { start: 0, end: 2, color: 'bg-gray-300' },
-      { start: 3, end: 3, color: 'bg-white' },
-      { start: 3, end: 6, color: 'bg-yellow-300' },
-      { start: 6, end: 24, color: 'bg-gray-300' },
     ],
   },
   {
@@ -102,6 +94,15 @@ const vaccineSchedule = [
     ],
   },
   {
+    name: 'Rota Virus 2',
+    schedule: [
+      { start: 0, end: 2, color: 'bg-gray-300' },
+      { start: 3, end: 3, color: 'bg-white' },
+      { start: 3, end: 6, color: 'bg-yellow-300' },
+      { start: 6, end: 24, color: 'bg-gray-300' },
+    ],
+  },
+  {
     name: 'DPT-HB-Hib 3',
     schedule: [
       { start: 0, end: 3, color: 'bg-gray-300' },
@@ -111,7 +112,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Polio Tetes 4',
+    name: 'Polio 4',
     schedule: [
       { start: 0, end: 3, color: 'bg-gray-300' },
       { start: 4, end: 4, color: 'bg-white' },
@@ -120,7 +121,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Polio Suntik (IPV) 1',
+    name: 'IPV',
     schedule: [
       { start: 0, end: 3, color: 'bg-gray-300' },
       { start: 4, end: 4, color: 'bg-white' },
@@ -129,7 +130,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Rota Virus (RV) 3*',
+    name: 'Rota Virus 3',
     schedule: [
       { start: 0, end: 3, color: 'bg-gray-300' },
       { start: 4, end: 4, color: 'bg-white' },
@@ -138,7 +139,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Campak-Rubella (MR)',
+    name: 'MR',
     schedule: [
       { start: 0, end: 8, color: 'bg-gray-300' },
       { start: 9, end: 9, color: 'bg-white' },
@@ -147,20 +148,12 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Pola Suntik (IPV) 2',
+    name: 'IPV 2',
     schedule: [
       { start: 0, end: 8, color: 'bg-gray-300' },
       { start: 9, end: 9, color: 'bg-white' },
       { start: 10, end: 11, color: 'bg-yellow-300' },
       { start: 12, end: 24, color: 'bg-orange-300' },
-    ],
-  },
-  {
-    name: 'Japanese Encephalitis (JE)*',
-    schedule: [
-      { start: 0, end: 9, color: 'bg-gray-300' },
-      { start: 10, end: 10, color: 'bg-white' },
-      { start: 11, end: 24, color: 'bg-orange-300' },
     ],
   },
   {
@@ -173,7 +166,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'DPT-HB-Hib Lanjutan',
+    name: 'Booster DPT-HB-Hib',
     schedule: [
       { start: 0, end: 12, color: 'bg-gray-300' },
       { start: 13, end: 13, color: 'bg-white' },
@@ -182,7 +175,7 @@ const vaccineSchedule = [
     ],
   },
   {
-    name: 'Campak-Rubella (MR) Lanjutan',
+    name: 'Booster MR',
     schedule: [
       { start: 0, end: 12, color: 'bg-gray-300' },
       { start: 18, end: 18, color: 'bg-white' },
@@ -192,7 +185,7 @@ const vaccineSchedule = [
   },
 ];
 
-const VaccinationSchedule = ({ idAnak }) => {
+const VaccinationSchedule = ({ idAnak, jenisKelamin }) => {
   const [checkedVaccine, setCheckedVaccine] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedVaccine, setSelectedVaccine] = useState(null);
@@ -212,6 +205,7 @@ const VaccinationSchedule = ({ idAnak }) => {
   const updateImmunisationMutation = useMutation({
     mutationFn: async (newImunisasi) => {
       await api.put(`/immunisation/${idAnak}`, {
+        jenisKelamin,
         imunisasi: newImunisasi,
       });
     },
@@ -360,6 +354,7 @@ const VaccineConfirmationModal = ({ onConfirm, onCancel, vaccineName }) => {
 
 VaccinationSchedule.propTypes = {
   idAnak: PropTypes.string,
+  jenisKelamin: PropTypes.string,
 };
 
 VaccineConfirmationModal.propTypes = {

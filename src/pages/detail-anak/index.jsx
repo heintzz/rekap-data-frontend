@@ -223,7 +223,7 @@ const HalamanDetailAnak = () => {
         </form>
         <div className="mt-4 border-b-2 pb-6">
           <p className="text-xl font-semibold">Imunisasi Anak</p>
-          <VaccinationSchedule idAnak={id} />
+          <VaccinationSchedule idAnak={id} jenisKelamin={formData.jenisKelamin} />
         </div>
         <div className="flex items-center justify-between mt-4">
           <p className="text-xl font-semibold">Riwayat Pemeriksaan</p>
