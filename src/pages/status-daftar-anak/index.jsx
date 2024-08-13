@@ -61,8 +61,8 @@ const HalamanStatusAnak = () => {
           data &&
           data?.map((anak) => (
             <Link
-              key={anak?.idAnak._id}
-              to={`/data/anak/${anak._id}`}
+              key={anak?._id}
+              to={`/data/anak/${anak?.idAnak?._id}`}
               className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between"
             >
               <div className="flex items-center">
