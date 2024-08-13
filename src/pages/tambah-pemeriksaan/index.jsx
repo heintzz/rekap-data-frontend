@@ -125,6 +125,14 @@ const HalamanTambahPemeriksaan = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [result, setResult] = useState(null);
+  const [touchedFields, setTouchedFields] = useState({});
+
+  const getBorderColor = (fieldName) => {
+    if (touchedFields[fieldName] && !formData[fieldName]) {
+      return 'border-red-500';
+    }
+    return 'border-gray-300';
+  };
 
   const [formData, setFormData] = useState({
     pertamaKali: false,
@@ -157,6 +165,21 @@ const HalamanTambahPemeriksaan = () => {
 
   const createHealthRecord = async (e) => {
     e.preventDefault();
+
+    const requiredFields = [
+      'idAnak',
+      'beratBadan',
+      'tinggiBadan',
+      'tanggalPencatatan',
+      'tanggalLahir',
+    ];
+    const missingFields = requiredFields.filter((field) => !formData[field]);
+    setTouchedFields(requiredFields.reduce((acc, field) => ({ ...acc, [field]: true }), {}));
+
+    if (missingFields.length > 0) {
+      toast.error(`Mohon lengkapi semua kolom berwarna merah`);
+      return;
+    }
 
     try {
       const response = await recordServices.createRecord({
@@ -221,7 +244,9 @@ const HalamanTambahPemeriksaan = () => {
               name="tanggalPencatatan"
               id="tanggalPencatatan"
               type="date"
-              className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+              className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                'tanggalPencatatan'
+              )} rounded-md focus:outline-none`}
               onChange={handleValueChange}
               value={tanggalPencatatan}
             ></input>
@@ -245,6 +270,7 @@ const HalamanTambahPemeriksaan = () => {
               label="Nama anak"
               onSelect={handleValueChange}
               name="idAnak"
+              borderColor={getBorderColor('idAnak')}
             />
           ) : (
             <div className="mb-4">
@@ -271,7 +297,9 @@ const HalamanTambahPemeriksaan = () => {
                 placeholder="20"
                 name="beratBadan"
                 id="beratBadan"
-                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                  'beratBadan'
+                )} rounded-md focus:outline-none`}
                 onChange={handleValueChange}
               ></input>
             </div>
@@ -283,7 +311,9 @@ const HalamanTambahPemeriksaan = () => {
                 placeholder="80"
                 name="tinggiBadan"
                 id="tinggiBadan"
-                className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md focus:outline-none"
+                className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                  'tinggiBadan'
+                )} rounded-md focus:outline-none`}
                 onChange={handleValueChange}
               ></input>
             </div>

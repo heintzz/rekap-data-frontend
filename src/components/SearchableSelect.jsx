@@ -2,7 +2,16 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
 
-const SearchableSelect = ({ options, labelKey, valueKey, placeholder, label, onSelect, name }) => {
+const SearchableSelect = ({
+  options,
+  labelKey,
+  valueKey,
+  placeholder,
+  label,
+  onSelect,
+  name,
+  borderColor,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState(options);
@@ -60,7 +69,7 @@ const SearchableSelect = ({ options, labelKey, valueKey, placeholder, label, onS
           onChange={handleInputChange}
           onClick={() => setIsOpen(true)}
           placeholder={placeholder}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+          className={`w-full px-3 py-2 border ${borderColor} rounded-md focus:outline-none`}
         />
         <FaCaretDown className="absolute top-3 right-3" />
         {isOpen && (
@@ -92,6 +101,7 @@ SearchableSelect.propTypes = {
   label: PropTypes.string,
   onSelect: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  borderColor: PropTypes.string.isRequired,
 };
 
 export default SearchableSelect;

@@ -12,6 +12,14 @@ const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 const HalamanTambahAnak = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
+
+  const getBorderColor = (fieldName) => {
+    if (touchedFields[fieldName] && !formData[fieldName]) {
+      return 'border-red-500';
+    }
+    return 'border-gray-300';
+  };
 
   const { data, isLoading } = useQuery({
     queryKey: ['getOrangTua'],
@@ -23,6 +31,25 @@ const HalamanTambahAnak = () => {
 
   const addChildData = async (e) => {
     e.preventDefault();
+
+    const requiredFields = [
+      'idOrangTua',
+      'nama',
+      'nik',
+      'jenisKelamin',
+      'tanggalLahir',
+      'dusun',
+      'rt',
+      'rw',
+    ];
+    const missingFields = requiredFields.filter((field) => !formData[field]);
+
+    setTouchedFields(requiredFields.reduce((acc, field) => ({ ...acc, [field]: true }), {}));
+
+    if (missingFields.length > 0) {
+      toast.error(`Mohon lengkapi semua data`);
+      return;
+    }
 
     try {
       const response = await parentServices.addChildData(formData);
@@ -38,6 +65,7 @@ const HalamanTambahAnak = () => {
 
   const handleValueChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setTouchedFields({ ...touchedFields, [e.target.name]: true });
   };
 
   return (
@@ -69,6 +97,7 @@ const HalamanTambahAnak = () => {
               label="Nama orang tua"
               onSelect={handleValueChange}
               name="idOrangTua"
+              borderColor={getBorderColor('idOrangTua')}
             />
           ) : (
             <div className="mb-4">
@@ -86,7 +115,9 @@ const HalamanTambahAnak = () => {
               placeholder="Nama anak"
               name="nama"
               id="nama"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                'nama'
+              )} rounded-md focus:outline-none`}
               onChange={handleValueChange}
             ></input>
           </div>
@@ -98,7 +129,9 @@ const HalamanTambahAnak = () => {
               placeholder="NIK anak"
               name="nik"
               id="nik"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                'nik'
+              )} rounded-md focus:outline-none`}
               onChange={handleValueChange}
             ></input>
           </div>
@@ -113,7 +146,7 @@ const HalamanTambahAnak = () => {
                   value="L"
                   onChange={handleValueChange}
                   checked={formData.jenisKelamin == 'L'}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  className={`h-4 w-4 text-blue-600 focus:ring-blue-500 ${getBorderColor('nama')}`}
                 />
                 <label htmlFor="laki" className="ml-2 text-sm text-gray-700">
                   Laki-laki
@@ -127,7 +160,7 @@ const HalamanTambahAnak = () => {
                   value="P"
                   onChange={handleValueChange}
                   checked={formData.jenisKelamin == 'P'}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  className={`h-4 w-4 text-blue-600 focus:ring-blue-500 ${getBorderColor('nama')}`}
                 />
                 <label htmlFor="vitA_tidak" className="ml-2 text-sm text-gray-700">
                   Perempuan
@@ -143,7 +176,9 @@ const HalamanTambahAnak = () => {
               name="tanggalLahir"
               id="tanggalLahir"
               type="date"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                'tanggalLahir'
+              )} rounded-md focus:outline-none`}
               onChange={handleValueChange}
             ></input>
           </div>
@@ -153,7 +188,9 @@ const HalamanTambahAnak = () => {
             </label>
             <select
               name="dusun"
-              className="w-full rounded-md px-3 py-2 border border-gray-300 focus:outline-none"
+              className={`w-full rounded-md px-3 py-2 border ${getBorderColor(
+                'nama'
+              )} focus:outline-none`}
               onChange={handleValueChange}
               defaultValue=""
             >
@@ -177,7 +214,9 @@ const HalamanTambahAnak = () => {
                   placeholder="RT"
                   name="rt"
                   id="rt"
-                  className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                  className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                    'nama'
+                  )} rounded-md focus:outline-none`}
                   onChange={handleValueChange}
                 />
               </div>
@@ -189,7 +228,9 @@ const HalamanTambahAnak = () => {
                   placeholder="RW"
                   name="rw"
                   id="rw"
-                  className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                  className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                    'nama'
+                  )} rounded-md focus:outline-none`}
                   onChange={handleValueChange}
                 />
               </div>

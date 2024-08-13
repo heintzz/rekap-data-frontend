@@ -9,12 +9,30 @@ const dusun = ['Pegundungan', 'Simpar', 'Srandil'];
 
 const HalamanTambahOrangTua = () => {
   const navigate = useNavigate();
-  const [input, setInput] = useState({});
+  const [formData, setFormData] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
+
+  const getBorderColor = (fieldName) => {
+    if (touchedFields[fieldName] && !formData[fieldName]) {
+      return 'border-red-500';
+    }
+    return 'border-gray-300';
+  };
 
   const addParentData = async (e) => {
     e.preventDefault();
+
+    const requiredFields = ['nama', 'nik', 'dusun', 'rt', 'rw'];
+    const missingFields = requiredFields.filter((field) => !formData[field]);
+    setTouchedFields(requiredFields.reduce((acc, field) => ({ ...acc, [field]: true }), {}));
+
+    if (missingFields.length > 0) {
+      toast.error(`Mohon lengkapi semua data`);
+      return;
+    }
+
     try {
-      const response = await parentServices.addParentData(input);
+      const response = await parentServices.addParentData(formData);
       const { success } = response;
       if (success) {
         toast.success('Data orang tua ditambahkan');
@@ -26,7 +44,7 @@ const HalamanTambahOrangTua = () => {
   };
 
   const handleValueChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -47,7 +65,9 @@ const HalamanTambahOrangTua = () => {
               placeholder="Nama "
               name="nama"
               id="nama"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                'nama'
+              )} rounded-md focus:outline-none`}
               onChange={handleValueChange}
             ></input>
           </div>
@@ -59,7 +79,9 @@ const HalamanTambahOrangTua = () => {
               placeholder="NIK"
               name="nik"
               id="nik"
-              className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+              className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                'nik'
+              )} rounded-md focus:outline-none`}
               onChange={handleValueChange}
             ></input>
           </div>
@@ -69,11 +91,13 @@ const HalamanTambahOrangTua = () => {
             </label>
             <select
               name="dusun"
-              className="w-full rounded-md px-3 py-2 border border-gray-300 focus:outline-none"
+              className={`w-full rounded-md px-3 py-2 border ${getBorderColor(
+                'dusun'
+              )} focus:outline-none`}
               onChange={handleValueChange}
               defaultValue=""
             >
-              <option value="" disabled={input.dusun !== ''}>
+              <option value="" disabled={formData.dusun !== ''}>
                 Pilih dusun
               </option>
               {dusun.map((item, index) => (
@@ -93,7 +117,9 @@ const HalamanTambahOrangTua = () => {
                   placeholder="RT"
                   name="rt"
                   id="rt"
-                  className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                  className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                    'rt'
+                  )} rounded-md focus:outline-none`}
                   onChange={handleValueChange}
                 />
               </div>
@@ -105,7 +131,9 @@ const HalamanTambahOrangTua = () => {
                   placeholder="RW"
                   name="rw"
                   id="rw"
-                  className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+                  className={`w-full h-10 px-3 py-2 border ${getBorderColor(
+                    'rw'
+                  )} rounded-md focus:outline-none`}
                   onChange={handleValueChange}
                 />
               </div>

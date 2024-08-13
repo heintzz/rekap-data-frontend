@@ -28,7 +28,7 @@ const HalamanStatusAnak = () => {
     ? `?status=${status}`
     : '';
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['getStatusPerkembangan'],
     queryFn: async () => {
       try {
