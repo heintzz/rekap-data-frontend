@@ -11,12 +11,21 @@ import { TbPlus, TbSearch } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import childServices from 'services/child.services';
 
+const ChildCardSkeleton = () => (
+  <div className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0] animate-pulse">
+    <div className="flex items-center">
+      <div className="w-6 h-6 bg-gray-200 rounded-full mr-3"></div>
+      <div className="h-4 bg-gray-200 rounded w-24"></div>
+    </div>
+  </div>
+);
+
 const ConfirmationModal = ({ isOpen, onClose, onConfirm, message }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 grid place-items-center bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className=" p-5 border w-96 shadow-lg rounded-md bg-white">
+      <div className="p-5 border w-96 shadow-lg rounded-md bg-white">
         <div className="mt-3 text-center">
           <h3 className="text-lg leading-6 font-medium text-gray-900">{message}</h3>
           <div className="flex items-center px-4 py-3 gap-x-2 mt-4">
@@ -130,30 +139,44 @@ const HalamanDaftarAnak = () => {
         <span>Total anak: {data?.length || 0} anak</span>
       </div>
 
-      <div className="mx-4 mt-4 space-y-3">
-        {!isLoading &&
-          filteredData &&
-          filteredData.map((anak) => (
-            <Link
-              key={anak._id}
-              to={`/data/anak/${anak._id}`}
-              className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0]"
-            >
-              <div className="flex items-center">
-                <FaUser size={24} className="text-[#4A90E2] mr-3" />
-                <h3 className="font-semibold text-[#4A5568]">{anak.nama}</h3>
-              </div>
-              <div className="flex items-center">
-                <button
-                  onClick={(e) => openDeleteModal(e, anak._id, anak.nama)}
-                  className="text-red-500 hover:text-red-600 mr-3"
-                >
-                  <FaTrashCan size={20} />
-                </button>
-              </div>
-            </Link>
+      {isLoading ? (
+        <div className="mx-4 mt-4 space-y-3">
+          {[...Array(5)].map((_, index) => (
+            <ChildCardSkeleton key={index} />
           ))}
-      </div>
+        </div>
+      ) : (
+        <>
+          {data?.length === 0 ? <p className="mt-4 mx-4">Belum ada daftar anak</p> : null}
+          {data?.length > 0 && filteredData?.length === 0 ? (
+            <p className="mt-4 mx-4">Anak belum terdaftar</p>
+          ) : null}
+
+          <div className="mx-4 mt-4 space-y-3">
+            {filteredData &&
+              filteredData.map((anak) => (
+                <Link
+                  key={anak._id}
+                  to={`/data/anak/${anak._id}`}
+                  className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0]"
+                >
+                  <div className="flex items-center">
+                    <FaUser size={24} className="text-[#4A90E2] mr-3" />
+                    <h3 className="font-semibold text-[#4A5568]">{anak.nama}</h3>
+                  </div>
+                  <div className="flex items-center">
+                    <button
+                      onClick={(e) => openDeleteModal(e, anak._id, anak.nama)}
+                      className="text-red-500 hover:text-red-600 mr-3"
+                    >
+                      <FaTrashCan size={20} />
+                    </button>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </>
+      )}
 
       <ConfirmationModal
         isOpen={isModalOpen}

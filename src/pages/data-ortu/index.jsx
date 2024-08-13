@@ -11,6 +11,15 @@ import { TbPlus, TbSearch } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import parentServices from 'services/parent.services';
 
+const ParentCardSkeleton = () => (
+  <div className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0] animate-pulse">
+    <div className="flex items-center">
+      <div className="w-6 h-6 bg-gray-200 rounded-full mr-3"></div>
+      <div className="h-4 bg-gray-200 rounded w-24"></div>
+    </div>
+  </div>
+);
+
 const ConfirmationModal = ({ isOpen, onClose, onConfirm, message }) => {
   if (!isOpen) return null;
 
@@ -133,30 +142,44 @@ const HalamanDaftarOrangTua = () => {
         <span>Total orang tua: {data?.length || 0} orang tua</span>
       </div>
 
-      <div className="mx-4 mt-4 space-y-3">
-        {!isLoading &&
-          filteredData &&
-          filteredData.map((parent) => (
-            <Link
-              to={`/data/ortu/${parent._id}`}
-              key={parent._id}
-              className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0]"
-            >
-              <div className="flex items-center">
-                <FaUser size={24} className="text-[#4A90E2] mr-3" />
-                <h3 className="font-semibold text-[#4A5568]">{parent.nama}</h3>
-              </div>
-              <div className="flex items-center">
-                <button
-                  onClick={(e) => openDeleteModal(e, parent._id, parent.nama)}
-                  className="text-red-500 hover:text-red-600 mr-3"
-                >
-                  <FaTrashCan size={20} />
-                </button>
-              </div>
-            </Link>
+      {isLoading ? (
+        <div className="mx-4 mt-4 space-y-3">
+          {[...Array(5)].map((_, index) => (
+            <ParentCardSkeleton key={index} />
           ))}
-      </div>
+        </div>
+      ) : (
+        <>
+          {data?.length === 0 ? <p className="mt-4 mx-4">Belum ada daftar orang tua</p> : null}
+          {data?.length > 0 && filteredData?.length === 0 ? (
+            <p className="mt-4 mx-4">Orang tua belum terdaftar</p>
+          ) : null}
+
+          <div className="mx-4 mt-4 space-y-3">
+            {filteredData &&
+              filteredData.map((parent) => (
+                <Link
+                  to={`/data/ortu/${parent._id}`}
+                  key={parent._id}
+                  className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between border border-[#E5E9F0]"
+                >
+                  <div className="flex items-center">
+                    <FaUser size={24} className="text-[#4A90E2] mr-3" />
+                    <h3 className="font-semibold text-[#4A5568]">{parent.nama}</h3>
+                  </div>
+                  <div className="flex items-center">
+                    <button
+                      onClick={(e) => openDeleteModal(e, parent._id, parent.nama)}
+                      className="text-red-500 hover:text-red-600 mr-3"
+                    >
+                      <FaTrashCan size={20} />
+                    </button>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </>
+      )}
 
       <ConfirmationModal
         isOpen={isModalOpen}
