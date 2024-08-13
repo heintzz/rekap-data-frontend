@@ -42,7 +42,6 @@ const HalamanStatusAnak = () => {
     },
     refetchOnWindowFocus: false,
   });
-  console.log(isError);
 
   return (
     <MainLayout>
