@@ -226,9 +226,16 @@ const HalamanTambahPemeriksaan = () => {
               value={tanggalPencatatan}
             ></input>
           </div>
-          {!isLoading && data && (
+          {isLoading ? (
+            <div className="mb-4">
+              <label className="block mb-2 text-sm font-medium text-gray-700">Nama anak</label>
+              <div className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md bg-gray-100">
+                <span className="text-gray-500">Memuat data anak...</span>
+              </div>
+            </div>
+          ) : data && data.length > 0 ? (
             <SearchableSelect
-              options={data?.map((child) => ({
+              options={data.map((child) => ({
                 id: child._id,
                 name: child.nama,
               }))}
@@ -239,6 +246,13 @@ const HalamanTambahPemeriksaan = () => {
               onSelect={handleValueChange}
               name="idAnak"
             />
+          ) : (
+            <div className="mb-4">
+              <label className="block mb-2 text-sm font-medium text-gray-700">Nama anak</label>
+              <div className="w-full h-10 px-3 py-2 border border-[#E5E9F0] rounded-md bg-gray-100">
+                <span className="text-gray-500">Tidak ada data anak</span>
+              </div>
+            </div>
           )}
           <div className="mb-4">
             <label htmlFor="beratBadan" className="block mb-2 text-sm font-medium text-gray-700">

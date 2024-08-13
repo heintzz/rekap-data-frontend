@@ -50,11 +50,18 @@ const HalamanTambahAnak = () => {
           <span className="text-lg font-semibold">Tambah Anak</span>
         </Link>
         <form onSubmit={addChildData} className="mt-4">
-          {!isLoading && data && (
+          {isLoading ? (
+            <div className="mb-4">
+              <label className="block mb-2 text-sm font-medium text-gray-700">Nama orang tua</label>
+              <div className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md bg-gray-100">
+                <span className="text-gray-500">Memuat data orang tua...</span>
+              </div>
+            </div>
+          ) : data && data.length > 0 ? (
             <SearchableSelect
-              options={data?.map((child) => ({
-                id: child._id,
-                name: child.nama,
+              options={data.map((parent) => ({
+                id: parent._id,
+                name: parent.nama,
               }))}
               labelKey="name"
               valueKey="id"
@@ -63,6 +70,13 @@ const HalamanTambahAnak = () => {
               onSelect={handleValueChange}
               name="idOrangTua"
             />
+          ) : (
+            <div className="mb-4">
+              <label className="block mb-2 text-sm font-medium text-gray-700">Nama orang tua</label>
+              <div className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md bg-gray-100">
+                <span className="text-gray-500">Tidak ada data orang tua</span>
+              </div>
+            </div>
           )}
           <div className="mb-4">
             <label htmlFor="nama" className="block mb-2 text-sm font-medium text-gray-700">
