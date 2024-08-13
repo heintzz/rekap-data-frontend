@@ -166,13 +166,7 @@ const HalamanTambahPemeriksaan = () => {
   const createHealthRecord = async (e) => {
     e.preventDefault();
 
-    const requiredFields = [
-      'idAnak',
-      'beratBadan',
-      'tinggiBadan',
-      'tanggalPencatatan',
-      'tanggalLahir',
-    ];
+    const requiredFields = ['idAnak', 'beratBadan', 'tinggiBadan', 'tanggalPencatatan'];
     const missingFields = requiredFields.filter((field) => !formData[field]);
     setTouchedFields(requiredFields.reduce((acc, field) => ({ ...acc, [field]: true }), {}));
 
