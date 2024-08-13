@@ -13,6 +13,7 @@ import HalamanTambahAnak from 'pages/tambah-anak';
 import HalamanTambahOrangTua from 'pages/tambah-ortu';
 import HalamanTambahPemeriksaan from 'pages/tambah-pemeriksaan';
 import { Route, Routes } from 'react-router-dom';
+import HalamanStatusAnak from '../pages/status-daftar-anak';
 
 export default function RouterConfig() {
   return (
@@ -23,6 +24,7 @@ export default function RouterConfig() {
       <Route path="/data/ortu/:id" element={<HalamanDaftarAnakOrangTua />} />
       <Route path="/data/ortu/tambah" element={<HalamanTambahOrangTua />} />
       <Route path="/data/anak" element={<HalamanDaftarAnak />} />
+      <Route path="/status/anak" element={<HalamanStatusAnak />} />
       <Route path="/data/anak/:id" element={<HalamanDetailAnak />} />
       <Route path="/data/anak/:id/kms" element={<HalamanKMSAnak />} />
       <Route path="/data/anak/tambah" element={<HalamanTambahAnak />} />
