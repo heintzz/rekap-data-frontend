@@ -54,7 +54,7 @@ const HalamanStatusAnak = () => {
           <span className="text-lg font-semibold">Pemeriksaan {name}</span>
         </Link>
       </header>
-      {data.length === 0 ? (
+      {data?.length === 0 ? (
         <p className="mt-4 mx-4">Tidak terdapat anak dalam indikasi tersebut</p>
       ) : null}
       <div className="mt-4 mx-4 space-y-3">
