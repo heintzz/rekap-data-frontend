@@ -9,12 +9,11 @@ import summaryServices from 'services/summary.services';
 import Artikel from '../home/components/Artikel';
 import PojokLiterasi from '../home/components/PojokLiterasi';
 import Slogan from '../home/components/Slogan';
-import VideoMateri from '../home/components/VideoMateri';
 
 const StatisticSkeleton = () => (
   <div className="animate-pulse">
-    <div className="grid grid-cols-2 gap-x-2 mt-3">
-      {[...Array(4)].map((_, index) => (
+    <div className="grid grid-cols-2 gap-2 mt-3">
+      {[...Array(5)].map((_, index) => (
         <div
           key={index}
           className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]"
@@ -72,6 +71,18 @@ const HalamanBeranda = () => {
                 </p>
                 <p className="text-[10px]">anak</p>
               </div>
+              <Link
+                to="/status/anak?statusPerkembangan=2T"
+                className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]"
+              >
+                <p className="text-xs">Pemeriksaan 2T (bulan ini)</p>
+                <p className="text-xl font-bold text-[#4A90E2]">
+                  {data?.countNotGrowingChild || 0}
+                </p>
+                <p className="text-[10px]">anak</p>
+              </Link>
+            </div>
+            <Link to="/status/anak?status=WOH_0,WOH_1" className="grid grid-cols-2 gap-x-2 mt-3">
               <div className="flex flex-col items-start p-2 bg-white rounded-md border border-[#E5E9F0]">
                 <p className="text-xs">Gizi Buruk (bulan ini)</p>
                 <p className="text-xl font-bold text-[#4A90E2]">
@@ -79,7 +90,7 @@ const HalamanBeranda = () => {
                 </p>
                 <p className="text-[10px]">anak</p>
               </div>
-            </div>
+            </Link>
           </>
         )}
         <div className="flex flex-col gap-3 mt-4">
@@ -107,7 +118,7 @@ const HalamanBeranda = () => {
         <div className="grid gap-y-6 mt-6">
           <Artikel />
           <PojokLiterasi />
-          <VideoMateri />
+          {/* <VideoMateri /> */}
         </div>
       </div>
     </MainLayout>
