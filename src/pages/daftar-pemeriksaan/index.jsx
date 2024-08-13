@@ -150,6 +150,10 @@ const HalamanDaftarPemeriksaan = () => {
   return (
     <MainLayout>
       <div className="px-5 grid gap-y-4">
+        {isLoading &&
+          [1, 2, 3].map((skeleton) => (
+            <div key={skeleton} className="w-full h-6 bg-gray-200 rounded-md animate-pulse"></div>
+          ))}
         {!isLoading &&
           data &&
           data?.map((record, index) => {
