@@ -8,11 +8,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
 
+const calculateAgeByMonth = (date, tanggalPencatatan) => {
+  console.log(date, tanggalPencatatan);
+  const today = new Date(tanggalPencatatan);
+  const birthDate = new Date(date);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const month = today.getMonth() - birthDate.getMonth();
+  return age * 12 + month;
+};
+
 const HalamanDetailPemeriksaan = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
-
   const [childData, setChildData] = useState({});
 
   const { data: recordData } = useQuery({
@@ -50,10 +58,18 @@ const HalamanDetailPemeriksaan = () => {
         [name]: value,
       }));
     }
+
+    if (name === 'tanggalPencatatan') {
+      setFormData((prev) => ({
+        ...prev,
+        usia: calculateAgeByMonth(childData?.tanggalLahir, formData?.tanggalPencatatan),
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await recordServices.updateRecord(id, formData);
       const { success } = response;
