@@ -1,6 +1,6 @@
 import MainLayout from 'components/MainLayout';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TfiArrowCircleRight } from 'react-icons/tfi';
 
 const AccordionItem = ({ question, answer, isOpen, onClick }) => {
@@ -27,27 +27,6 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
 
 const HalamanInformasiWebsite = () => {
   const [openItem, setOpenItem] = useState(null);
-  const [isInstalled, setIsInstalled] = useState(false);
-  const [promptInstall, setPromptInstall] = useState(null);
-  const [supportsPWA, setSupportsPWA] = useState(false);
-
-  useEffect(() => {
-    const handler = (e) => {
-      e.preventDefault();
-      console.log('Installation prompt available');
-      setSupportsPWA(true);
-      setPromptInstall(e);
-    };
-    window.addEventListener('beforeinstallprompt', handler);
-
-    return () => window.removeEventListener('beforeinstallprompt', handler);
-  }, []);
-
-  useEffect(() => {
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      setIsInstalled(true);
-    }
-  }, []);
 
   const toggleItem = (index) => {
     if (openItem === index) {
@@ -55,14 +34,6 @@ const HalamanInformasiWebsite = () => {
     } else {
       setOpenItem(index);
     }
-  };
-
-  const installApp = (evt) => {
-    evt.preventDefault();
-    if (!promptInstall) {
-      return;
-    }
-    promptInstall.prompt();
   };
 
   const qnaItems = [
@@ -101,34 +72,34 @@ const HalamanInformasiWebsite = () => {
       answer:
         'Untuk saat ini, belum terdapat fitur yang digunakan untuk mengimport data. Fokus dari website ini adalah menyediakan laporan bulanan yang cepat.',
     },
-    {
-      question: 'Bagaimana cara menginstall SiTunting menjadi aplikasi?',
-      answer: (
-        <div className="text-sm">
-          <p>
-            Pada menu browser pengguna pilih menu tambahkan ke beranda. Kemudian akan ada konfirmasi
-            untuk menginstall, lalu tekan tombol install.
-          </p>
-          {!isInstalled && supportsPWA && (
-            <div className="mt-2">
-              <p>
-                Jika belum terinstall, Anda dapat menekan tombol di bawah ini untuk menginstall
-                aplikasi:
-              </p>
-              <button
-                id="setup_button"
-                aria-label="Install app"
-                title="Install app"
-                className="bg-green-400 px-2 py-1 rounded-md mt-2 font-semibold"
-                onClick={installApp}
-              >
-                Install SiTunting
-              </button>
-            </div>
-          )}
-        </div>
-      ),
-    },
+    // {
+    //   question: 'Bagaimana cara menginstall SiTunting menjadi aplikasi?',
+    //   answer: (
+    //     <div className="text-sm">
+    //       <p>
+    //         Pada menu browser pengguna pilih menu tambahkan ke beranda. Kemudian akan ada konfirmasi
+    //         untuk menginstall, lalu tekan tombol install.
+    //       </p>
+    //       {!isInstalled && supportsPWA && (
+    //         <div className="mt-2">
+    //           <p>
+    //             Jika belum terinstall, Anda dapat menekan tombol di bawah ini untuk menginstall
+    //             aplikasi:
+    //           </p>
+    //           <button
+    //             id="setup_button"
+    //             aria-label="Install app"
+    //             title="Install app"
+    //             className="bg-green-400 px-2 py-1 rounded-md mt-2 font-semibold"
+    //             // onClick={installApp}
+    //           >
+    //             Install SiTunting
+    //           </button>
+    //         </div>
+    //       )}
+    //     </div>
+    // ),
+    // },
     {
       question: 'Siapa pengembang website SiTunting?',
       answer: 'Tim KKN-PPM UGM Jumantara Pejawaran 2024.',
