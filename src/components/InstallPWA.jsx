@@ -29,13 +29,7 @@ function InstallPWA() {
   }
 
   return (
-    <button
-      className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
-      id="setup_button"
-      aria-label="Install app"
-      title="Install app"
-      onClick={onClick}
-    >
+    <button id="setup_button" aria-label="Install app" title="Install app" onClick={onClick}>
       Install SiTunting
     </button>
   );

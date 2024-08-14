@@ -1,6 +1,6 @@
 import MainLayout from 'components/MainLayout';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TfiArrowCircleRight } from 'react-icons/tfi';
 
 const AccordionItem = ({ question, answer, isOpen, onClick }) => {
@@ -18,7 +18,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
       </button>
       {isOpen && (
         <div className="py-3 px-4 bg-[#EBF4FF]">
-          <p className="text-sm">{answer}</p>
+          {typeof answer === 'string' ? <div className="text-sm">{answer}</div> : answer}
         </div>
       )}
     </div>
@@ -27,6 +27,27 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
 
 const HalamanInformasiWebsite = () => {
   const [openItem, setOpenItem] = useState(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+  const [promptInstall, setPromptInstall] = useState(null);
+  const [supportsPWA, setSupportsPWA] = useState(false);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      console.log('Installation prompt available');
+      setSupportsPWA(true);
+      setPromptInstall(e);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstalled(true);
+    }
+  }, []);
 
   const toggleItem = (index) => {
     if (openItem === index) {
@@ -34,6 +55,14 @@ const HalamanInformasiWebsite = () => {
     } else {
       setOpenItem(index);
     }
+  };
+
+  const installApp = (evt) => {
+    evt.preventDefault();
+    if (!promptInstall) {
+      return;
+    }
+    promptInstall.prompt();
   };
 
   const qnaItems = [
@@ -73,6 +102,34 @@ const HalamanInformasiWebsite = () => {
         'Untuk saat ini, belum terdapat fitur yang digunakan untuk mengimport data. Fokus dari website ini adalah menyediakan laporan bulanan yang cepat.',
     },
     {
+      question: 'Bagaimana cara menginstall SiTunting menjadi aplikasi?',
+      answer: (
+        <div className="text-sm">
+          <p>
+            Pada menu browser pengguna pilih menu tambahkan ke beranda. Kemudian akan ada konfirmasi
+            untuk menginstall, lalu tekan tombol install.
+          </p>
+          {!isInstalled && supportsPWA && (
+            <div className="mt-2">
+              <p>
+                Jika belum terinstall, Anda dapat menekan tombol di bawah ini untuk menginstall
+                aplikasi:
+              </p>
+              <button
+                id="setup_button"
+                aria-label="Install app"
+                title="Install app"
+                className="bg-green-400 px-2 py-1 rounded-md mt-2 font-semibold"
+                onClick={installApp}
+              >
+                Install SiTunting
+              </button>
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
       question: 'Siapa pengembang website SiTunting?',
       answer: 'Tim KKN-PPM UGM Jumantara Pejawaran 2024.',
     },
@@ -99,10 +156,10 @@ const HalamanInformasiWebsite = () => {
 };
 
 AccordionItem.propTypes = {
-  question: PropTypes.string,
-  answer: PropTypes.string,
-  isOpen: PropTypes.bool,
-  onClick: PropTypes.func,
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default HalamanInformasiWebsite;

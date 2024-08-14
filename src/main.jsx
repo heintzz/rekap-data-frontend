@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import InstallPWA from 'components/InstallPWA';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
@@ -15,7 +14,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <QueryClientProvider client={queryClient}>
         <RouterConfig />
         <Toaster />
-        <InstallPWA />
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
