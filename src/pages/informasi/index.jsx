@@ -112,7 +112,7 @@ const HalamanInformasiWebsite = () => {
                 id="setup_button"
                 aria-label="Install app"
                 title="Install app"
-                className="bg-green-400 px-2 py-1 rounded-md mt-2 font-semibold"
+                className="bg-green-400 px-2 text-white py-1 rounded-md mt-2 font-semibold"
                 onClick={handleInstallPWA}
               >
                 Install SiTunting
