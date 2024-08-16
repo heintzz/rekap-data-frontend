@@ -2,6 +2,10 @@ import { BsFileEarmarkPdf } from 'react-icons/bs';
 
 const presentasi = [
   {
+    nama: 'Buku Pedoman SiTunting',
+    link: 'https://drive.google.com/uc?export=download&id=17nihy7V6XYWB73d9xG0qT7A7WqygI5fe',
+  },
+  {
     nama: 'Pemanfaatan TOGA untuk mencegah stunting',
     link: 'https://drive.google.com/uc?export=download&id=1SunG_--wL1krRAn1SNgKKrgliMwbPAbR',
   },
