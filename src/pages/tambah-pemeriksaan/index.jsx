@@ -217,6 +217,8 @@ const HalamanTambahPemeriksaan = () => {
     }
   };
 
+  console.log(formData);
+
   return (
     <MainLayout>
       <div className="px-4 pb-10">
@@ -354,7 +356,7 @@ const HalamanTambahPemeriksaan = () => {
                       name="pertamaKali"
                       value={true}
                       onChange={handleValueChange}
-                      checked={formData.pertamaKali}
+                      checked={formData.pertamaKali == 'true'}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                     />
                     <label htmlFor="pertamaKali_ya" className="ml-2 text-sm text-gray-700">
@@ -368,7 +370,7 @@ const HalamanTambahPemeriksaan = () => {
                       name="pertamaKali"
                       value={false}
                       onChange={handleValueChange}
-                      checked={!formData.pertamaKali}
+                      checked={formData.pertamaKali == 'false'}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                     />
                     <label htmlFor="pertamaKali_tidak" className="ml-2 text-sm text-gray-700">
