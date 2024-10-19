@@ -1,80 +1,62 @@
 import MainLayout from 'components/MainLayout';
-import useAuth from 'hooks/useAuth';
 import { useState } from 'react';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import userServices from 'services/user.services';
-import { setToken } from 'utils/auth';
+import { MdLock } from 'react-icons/md';
 
 const HalamanLogin = () => {
-  const { setIsAuthenticated } = useAuth();
-  const navigate = useNavigate();
-  const [loginValue, setLoginValue] = useState({
-    nama: '',
-    kataSandi: '',
-  });
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const correctPassword = import.meta.env.VITE_AUTH_PASSWORD;
 
-    try {
-      const response = await userServices.userLogin(loginValue);
-      const { success, token } = response;
-      if (success) {
-        setToken(token);
-        setLoginValue({
-          nama: '',
-          kataSandi: '',
-        });
-        await userServices.getUserData();
-        setIsAuthenticated(true);
-        navigate('/dashboard/kader');
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || 'Terjadi kesalahan pada server');
+  const handleLogin = () => {
+    if (password === correctPassword) {
+      localStorage.setItem(import.meta.env.VITE_AUTH_KEY, true);
+      window.location.href = '/';
+    } else {
+      setError('Password salah!');
     }
-  };
-
-  const handleLoginValue = (e) => {
-    const { name, value } = e.target;
-    setLoginValue({
-      ...loginValue,
-      [name]: value,
-    });
   };
 
   return (
     <MainLayout>
       <div className="px-5">
-        <h1>Masuk</h1>
-        <form onSubmit={handleLogin} className="mt-4 flex flex-col gap-y-3">
-          <input
-            type="text"
-            name="nama"
-            className="w-full rounded-2xl px-4 py-3 bg-gray-100 text-sm"
-            placeholder="Nama pengguna"
-            onChange={handleLoginValue}
-          />
-          <input
-            type="password"
-            name="kataSandi"
-            className="w-full rounded-2xl px-4 py-3 bg-gray-100 text-sm"
-            placeholder="Kata sandi"
-            onChange={handleLoginValue}
-          />
-          <div className="flex items-center gap-x-2 text-sm mt-2">
-            <button
-              type="submit"
-              onClick={handleLogin}
-              className="w-fit px-4 py-1 bg-green-500 text-white rounded-2xl"
-            >
-              Login
-            </button>
-            <a href="/register" className="underline text-black">
-              Daftar akun
-            </a>
+        <h1>Selamat datang di SiTunting!</h1>
+        <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <div className="mt-1 relative rounded-md shadow-sm">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <MdLock className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  placeholder="Masukkan password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                onClick={handleLogin}
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#4A90E2] hover:bg-blue-700"
+              >
+                Masuk
+              </button>
+            </div>
           </div>
-        </form>
+
+          {error && <div className="mt-3 text-sm text-red-600 text-center">{error}</div>}
+        </div>
       </div>
     </MainLayout>
   );

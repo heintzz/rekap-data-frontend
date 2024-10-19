@@ -21,8 +21,6 @@ const calculateAgeByMonth = (date, tanggalPencatatan) => {
   return age * 12 + month;
 };
 
-console.log('jsakdja');
-
 const ResultModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
   return (
@@ -226,8 +224,6 @@ const HalamanTambahPemeriksaan = () => {
       }));
     }
   };
-
-  console.log(formData);
 
   return (
     <MainLayout>

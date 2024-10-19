@@ -12,27 +12,45 @@ import HalamanKMSAnak from 'pages/kms-anak';
 import HalamanTambahAnak from 'pages/tambah-anak';
 import HalamanTambahOrangTua from 'pages/tambah-ortu';
 import HalamanTambahPemeriksaan from 'pages/tambah-pemeriksaan';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import HalamanStatusAnak from '../pages/status-daftar-anak';
+import HalamanLogin from '../pages/login';
+import { useEffect } from 'react';
+
+function ProtectedRoute(element) {
+  const isAuthenticated = !!localStorage.getItem(import.meta.env.VITE_AUTH_KEY);
+  return isAuthenticated ? element : <Navigate to="/login" replace />;
+}
 
 export default function RouterConfig() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem(import.meta.env.VITE_AUTH_KEY);
+
+  useEffect(() => {
+    if (isAuthenticated && location.pathname === '/login') {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, location, navigate]);
+
   return (
     <Routes>
-      <Route path="/" element={<HalamanBeranda />} />
-      <Route path="/artikel" element={<HalamanArtikel />} />
-      <Route path="/data/ortu" element={<HalamanDaftarOrangTua />} />
-      <Route path="/data/ortu/:id" element={<HalamanDaftarAnakOrangTua />} />
-      <Route path="/data/ortu/tambah" element={<HalamanTambahOrangTua />} />
-      <Route path="/data/anak" element={<HalamanDaftarAnak />} />
-      <Route path="/status/anak" element={<HalamanStatusAnak />} />
-      <Route path="/data/anak/:id" element={<HalamanDetailAnak />} />
-      <Route path="/data/anak/:id/kms" element={<HalamanKMSAnak />} />
-      <Route path="/data/anak/tambah" element={<HalamanTambahAnak />} />
-      <Route path="/pemeriksaan" element={<HalamanDaftarTanggalPemeriksaan />} />
-      <Route path="/pemeriksaan/waktu" element={<HalamanDaftarPemeriksaan />} />
-      <Route path="/pemeriksaan/tambah" element={<HalamanTambahPemeriksaan />} />
-      <Route path="/pemeriksaan/:id" element={<HalamanDetailPemeriksaan />} />
-      <Route path="/info-website" element={<HalamanInformasiWebsite />} />
+      <Route path="/login" element={<HalamanLogin />} />
+      <Route path="/" element={ProtectedRoute(<HalamanBeranda />)} />
+      <Route path="/artikel" element={ProtectedRoute(<HalamanArtikel />)} />
+      <Route path="/data/ortu" element={ProtectedRoute(<HalamanDaftarOrangTua />)} />
+      <Route path="/data/ortu/:id" element={ProtectedRoute(<HalamanDaftarAnakOrangTua />)} />
+      <Route path="/data/ortu/tambah" element={ProtectedRoute(<HalamanTambahOrangTua />)} />
+      <Route path="/data/anak" element={ProtectedRoute(<HalamanDaftarAnak />)} />
+      <Route path="/status/anak" element={ProtectedRoute(<HalamanStatusAnak />)} />
+      <Route path="/data/anak/:id" element={ProtectedRoute(<HalamanDetailAnak />)} />
+      <Route path="/data/anak/:id/kms" element={ProtectedRoute(<HalamanKMSAnak />)} />
+      <Route path="/data/anak/tambah" element={ProtectedRoute(<HalamanTambahAnak />)} />
+      <Route path="/pemeriksaan" element={ProtectedRoute(<HalamanDaftarTanggalPemeriksaan />)} />
+      <Route path="/pemeriksaan/waktu" element={ProtectedRoute(<HalamanDaftarPemeriksaan />)} />
+      <Route path="/pemeriksaan/tambah" element={ProtectedRoute(<HalamanTambahPemeriksaan />)} />
+      <Route path="/pemeriksaan/:id" element={ProtectedRoute(<HalamanDetailPemeriksaan />)} />
+      <Route path="/info-website" element={ProtectedRoute(<HalamanInformasiWebsite />)} />
     </Routes>
   );
 }

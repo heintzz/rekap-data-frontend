@@ -9,7 +9,6 @@ import childServices from 'services/child.services';
 import recordServices from 'services/record.services';
 
 const calculateAgeByMonth = (date, tanggalPencatatan) => {
-  console.log(date, tanggalPencatatan);
   const today = new Date(tanggalPencatatan);
   const birthDate = new Date(date);
   let age = today.getFullYear() - birthDate.getFullYear();

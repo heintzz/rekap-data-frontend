@@ -33,7 +33,6 @@ const HalamanInformasiWebsite = () => {
   useEffect(() => {
     const handler = (e) => {
       e.preventDefault();
-      console.log('Installation prompt available');
       setSupportsPWA(true);
       setPromptInstall(e);
     };
