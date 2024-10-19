@@ -21,6 +21,8 @@ const calculateAgeByMonth = (date, tanggalPencatatan) => {
   return age * 12 + month;
 };
 
+console.log('jsakdja');
+
 const ResultModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
   return (
@@ -138,6 +140,7 @@ const HalamanTambahPemeriksaan = () => {
     pertamaKali: false,
     tanggalPencatatan: new Date().toISOString().split('T')[0],
   });
+
   const [tanggalLahir, setTanggalLahir] = useState('');
   const [jenisKelamin, setJenisKelamin] = useState('');
 
@@ -214,6 +217,13 @@ const HalamanTambahPemeriksaan = () => {
       const child = data.find((child) => child._id === value);
       setTanggalLahir(child?.tanggalLahir);
       setJenisKelamin(child?.jenisKelamin);
+    }
+
+    if (name == 'pertamaKali') {
+      setFormData((prev) => ({
+        ...prev,
+        pertamaKali: value === 'true' ? true : false,
+      }));
     }
   };
 
@@ -356,7 +366,7 @@ const HalamanTambahPemeriksaan = () => {
                       name="pertamaKali"
                       value={true}
                       onChange={handleValueChange}
-                      checked={formData.pertamaKali == 'true'}
+                      checked={formData.pertamaKali}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                     />
                     <label htmlFor="pertamaKali_ya" className="ml-2 text-sm text-gray-700">
@@ -370,7 +380,7 @@ const HalamanTambahPemeriksaan = () => {
                       name="pertamaKali"
                       value={false}
                       onChange={handleValueChange}
-                      checked={formData.pertamaKali == 'false'}
+                      checked={!formData.pertamaKali}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-[#E5E9F0]"
                     />
                     <label htmlFor="pertamaKali_tidak" className="ml-2 text-sm text-gray-700">
